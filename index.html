@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座运势 & 生肖测试 - 每日占卜</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 0; }
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #c77dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .subtitle { color: #a0a0a0; font-size: 1.1em; }
+        .tabs { display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap; }
+        .tab-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .tab-btn.active {
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-size: 1.1em; color: #e0e0e0; }
+        select, input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        select:focus, input:focus { border-color: #ffd700; }
+        select option { background: #1a1a2e; }
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            color: #1a1a2e;
+        }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(255,215,0,0.3); }
+        .result { display: none; animation: fadeIn 0.5s ease; }
+        .result.show { display: block; }
+        .zodiac-icon { font-size: 4em; text-align: center; margin-bottom: 20px; }
+        .result-title { text-align: center; font-size: 1.8em; margin-bottom: 20px; color: #ffd700; }
+        .luck-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .luck-item:last-child { border-bottom: none; }
+        .luck-label { color: #a0a0a0; }
+        .luck-value { font-weight: bold; color: #fff; }
+        .luck-score { color: #ffd700; font-size: 1.3em; }
+        .fortune-text { line-height: 1.8; color: #e0e0e0; margin-top: 15px; }
+        .compatibility { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0; flex-wrap: wrap; }
+        .compat-item { text-align: center; }
+        .compat-icon { font-size: 3em; }
+        .compat-score { font-size: 2em; color: #ffd700; margin-top: 10px; }
+        footer { text-align: center; padding: 40px 0; color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ 星座运势 & 生肖测试 ✨</h1>
+            <p class="subtitle">每日占卜 · 命中注定 · 趋吉避凶</p>
+        </header>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('zodiac')">星座运势</button>
+            <button class="tab-btn" onclick="switchTab('chinese')">生肖测试</button>
+            <button class="tab-btn" onclick="switchTab('compat')">星座配对</button>
+        </div>
+
+        <!-- 星座运势 -->
+        <div id="zodiac" class="tab-content active">
+            <div class="card">
+                <div class="form-group">
+                    <label>选择你的太阳星座</label>
+                    <select id="zodiac-select">
+                        <option value="">请选择星座</option>
+                        <option value="aries">♈ 白羊座 (3.21-4.19)</option>
+                        <option value="taurus">♉ 金牛座 (4.20-5.20)</option>
+                        <option value="gemini">♊ 双子座 (5.21-6.21)</option>
+                        <option value="cancer">♋ 巨蟹座 (6.22-7.22)</option>
+                        <option value="leo">♌ 狮子座 (7.23-8.22)</option>
+                        <option value="virgo">♍ 处女座 (8.23-9.22)</option>
+                        <option value="libra">♎ 天秤座 (9.23-10.23)</option>
+                        <option value="scorpio">♏ 天蝎座 (10.24-11.22)</option>
+                        <option value="sagittarius">♐ 射手座 (11.23-12.21)</option>
+                        <option value="capricorn">♑ 摩羯座 (12.22-1.19)</option>
+                        <option value="aquarius">♒ 水瓶座 (1.20-2.18)</option>
+                        <option value="pisces">♓ 双鱼座 (2.19-3.20)</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="getZodiacFortune()">查看今日运势</button>
+            </div>
+            <div id="zodiac-result" class="card result">
+                <div class="zodiac-icon" id="zodiac-icon">♈</div>
+                <div class="result-title" id="zodiac-name">白羊座</div>
+                <div class="luck-item"><span class="luck-label">整体运势</span><span class="luck-score" id="overall-score">★★★★★</span></div>
+                <div class="luck-item"><span class="luck-label">爱情运势</span><span class="luck-score" id="love-score">★★★★☆</span></div>
+                <div class="luck-item"><span class="luck-label">事业运势</span><span class="luck-score" id="career-score">★★★★☆</span></div>
+                <div class="luck-item"><span class="luck-label">财运运势</span><span class="luck-score" id="money-score">★★★☆☆</span></div>
+                <div class="luck-item"><span class="luck-label">健康运势</span><span class="luck-score" id="health-score">★★★★★</span></div>
+                <div class="fortune-text" id="fortune-text">今日运势详解...</div>
+            </div>
+        </div>
+
+        <!-- 生肖测试 -->
+        <div id="chinese" class="tab-content">
+            <div class="card">
+                <div class="form-group">
+                    <label>选择你的生肖</label>
+                    <select id="chinese-zodiac-select">
+                        <option value="">请选择生肖</option>
+                        <option value="rat">🐀 鼠</option>
+                        <option value="ox">🐂 牛</option>
+                        <option value="tiger">🐅 虎</option>
+                        <option value="rabbit">🐇 兔</option>
+                        <option value="dragon">🐉 龙</option>
+                        <option value="snake">🐍 蛇</option>
+                        <option value="horse">🐎 马</option>
+                        <option value="goat">🐐 羊</option>
+                        <option value="monkey">🐒 猴</option>
+                        <option value="rooster">🐓 鸡</option>
+                        <option value="dog">🐕 狗</option>
+                        <option value="pig">🐖 猪</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="getChineseFortune()">查看2026年生肖运势</button>
+            </div>
+            <div id="chinese-result" class="card result">
+                <div class="zodiac-icon" id="chinese-icon">🐀</div>
+                <div class="result-title" id="chinese-name">鼠</div>
+                <div class="luck-item"><span class="luck-label">2026年整体运势</span><span class="luck-score" id="year-score">★★★★★</span></div>
+                <div class="luck-item"><span class="luck-label">事业运势</span><span class="luck-score" id="career-score-c">★★★★☆</span></div>
+                <div class="luck-item"><span class="luck-label">财运运势</span><span class="luck-score" id="money-score-c">★★★★☆</span></div>
+                <div class="luck-item"><span class="luck-label">健康运势</span><span class="luck-score" id="health-score-c">★★★☆☆</span></div>
+                <div class="fortune-text" id="chinese-fortune-text">2026年运势详解...</div>
+            </div>
+        </div>
+
+        <!-- 星座配对 -->
+        <div id="compat" class="tab-content">
+            <div class="card">
+                <div class="form-group">
+                    <label>你的星座</label>
+                    <select id="your-zodiac">
+                        <option value="">请选择你的星座</option>
+                        <option value="aries">♈ 白羊座</option>
+                        <option value="taurus">♉ 金牛座</option>
+                        <option value="gemini">♊ 双子座</option>
+                        <option value="cancer">♋ 巨蟹座</option>
+                        <option value="leo">♌ 狮子座</option>
+                        <option value="virgo">♍ 处女座</option>
+                        <option value="libra">♎ 天秤座</option>
+                        <option value="scorpio">♏ 天蝎座</option>
+                        <option value="sagittarius">♐ 射手座</option>
+                        <option value="capricorn">♑ 摩羯座</option>
+                        <option value="aquarius">♒ 水瓶座</option>
+                        <option value="pisces">♓ 双鱼座</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>TA的星座</label>
+                    <select id="their-zodiac">
+                        <option value="">请选择TA的星座</option>
+                        <option value="aries">♈ 白羊座</option>
+                        <option value="taurus">♉ 金牛座</option>
+                        <option value="gemini">♊ 双子座</option>
+                        <option value="cancer">♋ 巨蟹座</option>
+                        <option value="leo">♌ 狮子座</option>
+                        <option value="virgo">♍ 处女座</option>
+                        <option value="libra">♎ 天秤座</option>
+                        <option value="scorpio">♏ 天蝎座</option>
+                        <option value="sagittarius">♐ 射手座</option>
+                        <option value="capricorn">♑ 摩羯座</option>
+                        <option value="aquarius">♒ 水瓶座</option>
+                        <option value="pisces">♓ 双鱼座</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="checkCompatibility()">查看配对指数</button>
+            </div>
+            <div id="compat-result" class="card result">
+                <div class="compatibility">
+                    <div class="compat-item"><div class="compat-icon" id="your-icon">♈</div><div id="your-name">白羊座</div></div>
+                    <div><div class="compat-score" id="compat-score">85%</div><div style="text-align:center;color:#a0a0a0;">配对指数</div></div>
+                    <div class="compat-item"><div class="compat-icon" id="their-icon">♉</div><div id="their-name">金牛座</div></div>
+                </div>
+                <div class="fortune-text" id="compat-text">配对分析...</div>
+            </div>
+        </div>
+        <footer><p>© 2026 星座运势 & 生肖测试 | 每日更新 · 仅供参考</p></footer>
+    </div>
+
+    <script>
+        const zodiacData = {
+            aries: { name: '白羊座', icon: '♈' }, taurus: { name: '金牛座', icon: '♉' },
+            gemini: { name: '双子座', icon: '♊' }, cancer: { name: '巨蟹座', icon: '♋' },
+            leo: { name: '狮子座', icon: '♌' }, virgo: { name: '处女座', icon: '♍' },
+            libra: { name: '天秤座', icon: '♎' }, scorpio: { name: '天蝎座', icon: '♏' },
+            sagittarius: { name: '射手座', icon: '♐' }, capricorn: { name: '摩羯座', icon: '♑' },
+            aquarius: { name: '水瓶座', icon: '♒' }, pisces: { name: '双鱼座', icon: '♓' }
+        };
+        const chineseData = {
+            rat: { name: '鼠', icon: '🐀' }, ox: { name: '牛', icon: '🐂' },
+            tiger: { name: '虎', icon: '🐅' }, rabbit: { name: '兔', icon: '🐇' },
+            dragon: { name: '龙', icon: '🐉' }, snake: { name: '蛇', icon: '🐍' },
+            horse: { name: '马', icon: '🐎' }, goat: { name: '羊', icon: '🐐' },
+            monkey: { name: '猴', icon: '🐒' }, rooster: { name: '鸡', icon: '🐓' },
+            dog: { name: '狗', icon: '🐕' }, pig: { name: '猪', icon: '🐖' }
+        };
+        const fortuneTexts = {
+            aries: { overall: "今天是你展现领导力的一天！火星的能量让你充满活力和勇气，适合主动出击。工作中可能会有意外惊喜，财运也不错！", love: "单身者今天有望遇到心动的对象，勇敢表达自己。", career: "事业上有新的机会出现，执行力和创造力会受到认可。", money: "财务状况良好，适合进行理性投资。", health: "精力充沛，但要注意运动适度。" },
+            taurus: { overall: "金星今天特别眷顾你！金钱和感情方面都有好消息。稳定是你的优势，但也要学会变通。", love: "金星守护的你，今天在感情中特别有魅力。", career: "工作稳定推进，适合处理财务相关事务。", money: "财运亨通，可能会有意外收获！", health: "注意饮食均衡，避免暴饮暴食。" },
+            gemini: { overall: "水星今天给你带来了思维的火花！适合沟通、谈判、学习新知识。", love: "你的幽默感和表达能力会在今天吸引很多人。", career: "创意十足，适合从事需要沟通和创意的工作。", money: "理性消费，避免冲动购物。", health: "注意用眼过度，适当休息。" },
+            cancer: { overall: "月亮守护的你，今天情绪丰富而敏感。这是内省和情感交流的好时机。", love: "感情运极佳，适合与家人朋友共度时光。", career: "适合处理需要细心和耐心的工作。", money: "财运平稳，注意理财。", health: "注意调节情绪，保持心情愉快。" },
+            leo: { overall: "太阳今天照亮你的世界！你自带光环，吸引众人目光。今天是展现自我的好日子！", love: "自信的你格外有魅力，感情运势上升。", career: "事业上有亮眼表现，可能获得晋升或认可。", money: "财运势不可挡，但也要懂得分享。", health: "活力充沛，适合运动锻炼。" },
+            virgo: { overall: "今天是你展示专业能力的好时机。你的细致和分析能力会得到充分发挥。", love: "适合与伴侣一起规划未来。", career: "工作上的努力会被上司看到。", money: "正财运稳定，适合存钱规划。", health: "注意休息，避免过度劳累。" },
+            libra: { overall: "天平座的你在今天会特别注重和谐与平衡。这是社交和建立人脉的好时机。", love: "社交运佳，容易遇到理想对象。", career: "适合协调类工作，谈判高手。", money: "财运平衡，消费理性。", health: "保持规律作息。" },
+            scorpio: { overall: "今天是你深入探索真相的日子。你的洞察力特别敏锐，适合研究分析。", love: "感情深刻而强烈，容易陷入热恋。", career: "适合需要深度分析的工作。", money: "偏财运佳，可能有意外惊喜。", health: "注意调节心理压力。" },
+            sagittarius: { overall: "木星赐予你今天的幸运！外出旅行、哲学思考都会带来收获。", love: "单身者有望在旅途中遇到缘分。", career: "适合拓展业务，远程工作。", money: "财运上升，投资运佳。", health: "活力满满，适合户外运动。" },
+            capricorn: { overall: "土星给你今天带来了稳重和耐心。这是积累和沉淀的好时机。", love: "感情稳定，适合长期发展。", career: "工作上有望突破瓶颈。", money: "正财运稳定，理财有道。", health: "注意劳逸结合。" },
+            aquarius: { overall: "今天你的创新能力爆棚！独特思维会带来意想不到的收获。", love: "有趣的灵魂吸引人，适合交新朋友。", career: "适合创新类工作，创意受到赏识。", money: "理财有新想法，可能发现新机会。", health: "注意头部休息。" },
+            pisces: { overall: "今天是你灵感迸发的日子。艺术创作或心灵成长都会很顺利。", love: "感情丰富而浪漫，容易动心。", career: "艺术相关工作运气极佳。", money: "财运平稳，注意防范诈骗。", health: "注意休息，保证睡眠。" }
+        };
+        const chineseFortuneTexts = {
+            rat: "2026年属鼠人整体运势平稳上升。在龙蛇年的影响下，你们将迎来事业上的突破。财运方面，正财稳定，偏财可期。健康需要注意心血管问题。",
+            ox: "2026年属牛人运势相当不错！蛇年为你带来贵人之运，工作中有望得到上级赏识。财运稳步提升，适合长期投资。",
+            tiger: "2026年属虎人运势先抑后扬。上半年需要耐心等待机会，下半年会有意想不到的收获。感情方面有望遇到正缘。",
+            rabbit: "2026年属兔人犯太岁，需要低调行事。但危机中也蕴含机遇，注意身体健康，平安是福。",
+            dragon: "2026年属龙人延续去年的好运势！事业财运双丰收，是收获的一年。但要注意处理好人际关系。",
+            snake: "2026年属蛇人时来运转！太岁当头，却能化压力为动力。财运亨通，适合创业或拓展业务。",
+            horse: "2026年是属马人的转运年！此前几年的低谷将结束，迎来新的发展机遇。事业上有望升职加薪。",
+            goat: "2026年属羊人运势平稳。在蛇年温和的氛围下，各方面都有小惊喜。财运不错，适合学习新技能。",
+            monkey: "2026年属猴人运势下滑，需要谨慎行事。事业上可能会遇到挑战，但也是锻炼能力的机会。",
+            rooster: "2026年属鸡人时来运转！此前的不顺将过去，迎来新的发展机遇。财运提升，人际关系改善。",
+            dog: "2026年属狗人犯太岁运势动荡。事业和财运都有波动，建议稳扎稳打，不宜冒进。",
+            pig: "2026年属猪人运势不错。在蛇年温和的氛围下，各方面都比较顺利。财运有惊喜，适合理财规划。"
+        };
+        const compatibilityData = {
+            'aries-aries': { score: 80, text: "两个白羊座在一起简直是火花四射！你们都充满活力和热情，很容易产生共鸣。但要注意控制脾气，学会包容。" },
+            'aries-taurus': { score: 70, text: "白羊的冲动需要金牛的稳重来平衡。虽然性格差异大，但如果真心相爱，会是很互补的一对。" },
+            'aries-gemini': { score: 85, text: "非常默契的一对！白羊的行动力配上双子的智慧，能创造无限可能。" },
+            'aries-cancer': { score: 65, text: "白羊的强势可能会让敏感的巨蟹感到压力。需要更多沟通和理解。" },
+            'aries-leo': { score: 95, text: "天作之合！两个火象星座在一起，热情似火，默契十足。会成为人人羡慕的一对！" },
+            'aries-virgo': { score: 60, text: "白羊的急躁和处女的追求完美有时会产生摩擦。需要彼此包容。" },
+            'aries-libra': { score: 75, text: "白羊的主动可以带动天秤，但天秤的犹豫可能会让白羊不耐烦。" },
+            'aries-scorpio': { score: 80, text: "两个强势的人在一起，要么成就传奇，要么遍体鳞伤。需要找到平衡点。" },
+            'aries-sagittarius': { score: 90, text: "火象三杰之一，超级合拍！你们的冒险精神和热情会让生活充满乐趣。" },
+            'aries-capricorn': { score: 65, text: "白羊的冲动和摩羯的保守形成对比，需要时间磨合。" },
+            'aries-aquarius': { score: 80, text: "白羊的活力能激发水瓶的创意，你们可以一起创造奇迹！" },
+            'aries-pisces': { score: 70, text: "白羊需要学会理解双鱼的敏感细腻，感情才能长久。" },
+            'taurus-gemini': { score: 70, text: "金牛的稳定和双子的善变需要时间磨合，但互补性强。" },
+            'taurus-cancer': { score: 95, text: "超级合拍！金牛的稳重和巨蟹的温柔是天生一对。" },
+            'taurus-leo': { score: 80, text: "金牛和狮子可以互补，一个务实一个浪漫。" },
+            'taurus-virgo': { score: 95, text: "土象星座的默契！你们都追求稳定和安全感，是理想伴侣。" },
+            'taurus-libra': { score: 85, text: "金牛和天秤都注重生活品质，在一起会很和谐。" },
+            'taurus-scorpio': { score: 90, text: "两个都很执着的星座，一旦相爱就会全身心投入。" },
+            'taurus-capricorn': { score: 95, text: "土象星座的强强联合！价值观一致，目标相同。" },
+            'taurus-pisces': { score: 85, text: "金牛和双鱼都是注重感受的星座，相处融洽。" },
+            'gemini-cancer': { score: 65, text: "双子的善变和巨蟹的敏感需要更多沟通。" },
+            'gemini-leo': { score: 85, text: "风火相生，你们在一起充满活力和乐趣！" },
+            'gemini-libra': { score: 90, text: "风象星座的默契！沟通无障碍，理念相通。" },
+            'gemini-scorpio': { score: 70, text: "两个都善于隐藏的星座，需要坦诚相待。" },
+            'gemini-sagittarius': { score: 85, text: "风火相加，你们都热爱自由和冒险，超级合拍！" },
+            'gemini-aquarius': { score: 95, text: "风象星座的绝配！思想和灵魂的高度契合。" },
+            'cancer-leo': { score: 75, text: "狮子的强势需要巨蟹的温柔来平衡。" },
+            'cancer-virgo': { score: 90, text: "都是注重细节的星座，相处融洽，互相关心。" },
+            'cancer-scorpio': { score: 95, text: "水象星座的深刻连接！你们理解彼此的内心世界。" },
+            'cancer-capricorn': { score: 80, text: "都很顾家，价值观相似，可以长久。" },
+            'cancer-pisces': { score: 95, text: "双鱼巨蟹一家亲！情感丰富，互相理解。" },
+            'leo-virgo': { score: 70, text: "狮子的骄傲和处女的挑剔需要互相包容。" },
+            'leo-libra': { score: 90, text: "都是追求美的星座，在一起非常和谐。" },
+            'leo-sagittarius': { score: 95, text: "火象星座的激情碰撞！超级合拍，充满乐趣。" },
+            'leo-aquarius': { score: 80, text: "狮子的热情能感染水瓶，创新能力满分。" },
+            'leo-pisces': { score: 85, text: "狮子的保护欲和双鱼的温柔是完美组合。" },
+            'virgo-libra': { score: 80, text: "处女和天秤可以互补，一个重实际一个重和谐。" },
+            'virgo-scorpio': { score: 85, text: "都是内敛深刻的星座，默契十足。" },
+            'virgo-capricorn': { score: 95, text: "土象星座的强强联合！价值观高度一致。" },
+            'virgo-pisces': { score: 85, text: "处女和双鱼可以互相弥补对方的不足。" },
+            'libra-scorpio': { score: 75, text: "天秤的温和和蝎子的强烈需要平衡。" },
+            'libra-sagittarius': { score: 85, text: "都热爱自由和社交，在一起会很开心。" },
+            'libra-aquarius': { score: 90, text: "风象星座的默契，思想和价值观相通。" },
+            'libra-pisces': { score: 85, text: "两个都浪漫的星座，感情丰富。" },
+            'scorpio-sagittarius': { score: 70, text: "一强一弱，需要互相尊重。" },
+            'scorpio-capricorn': { score: 90, text: "两个都很执着的星座，可以共同创造伟业。" },
+            'scorpio-pisces': { score: 95, text: "水象星座的心灵相通！灵魂伴侣的组合。" },
+            'sagittarius-capricorn': { score: 70, text: "射手的自由和摩羯的稳重需要调和。" },
+            'sagittarius-aquarius': { score: 90, text: "都热爱自由和创新，灵魂伴侣！" },
+            'capricorn-aquarius': { score: 75, text: "一传统一创新，需要时间磨合。" },
+            'capricorn-pisces': { score: 85, text: "摩羯的现实和双鱼的理想可以互补。" },
+            'aquarius-pisces': { score: 80, text: "风与水的结合，需要相互理解。" }
+        };
+
+        function getStars(seed) {
+            const v = (seed % 30) + 70;
+            const s = Math.min(Math.ceil(v / 20), 5);
+            return '★'.repeat(s) + '☆'.repeat(5 - s);
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function getZodiacFortune() {
+            const zodiac = document.getElementById('zodiac-select').value;
+            if (!zodiac) { alert('请选择星座！'); return; }
+            const data = zodiacData[zodiac];
+            const seed = new Date().getDate() + zodiac.charCodeAt(0);
+            document.getElementById('zodiac-icon').textContent = data.icon;
+            document.getElementById('zodiac-name').textContent = data.name;
+            document.getElementById('overall-score').textContent = getStars(seed);
+            document.getElementById('love-score').textContent = getStars(seed + 1);
+            document.getElementById('career-score').textContent = getStars(seed + 2);
+            document.getElementById('money-score').textContent = getStars(seed + 3);
+            document.getElementById('health-score').textContent = getStars(seed + 4);
+            document.getElementById('fortune-text').textContent = fortuneTexts[zodiac].overall;
+            document.getElementById('zodiac-result').classList.add('show');
+        }
+
+        function getChineseFortune() {
+            const zodiac = document.getElementById('chinese-zodiac-select').value;
+            if (!zodiac) { alert('请选择生肖！'); return; }
+            const data = chineseData[zodiac];
+            const seed = 2026 + zodiac.charCodeAt(0);
+            document.getElementById('chinese-icon').textContent = data.icon;
+            document.getElementById('chinese-name').textContent = data.name;
+            document.getElementById('year-score').textContent = getStars(seed);
+            document.getElementById('career-score-c').textContent = getStars(seed + 1);
+            document.getElementById('money-score-c').textContent = getStars(seed + 2);
+            document.getElementById('health-score-c').textContent = getStars(seed + 3);
+            document.getElementById('chinese-fortune-text').textContent = chineseFortuneTexts[zodiac];
+            document.getElementById('chinese-result').classList.add('show');
+        }
+
+        function checkCompatibility() {
+            const your = document.getElementById('your-zodiac').value;
+            const their = document.getElementById('their-zodiac').value;
+            if (!your || !their) { alert('请选择两个星座！'); return; }
+            const key = your + '-' + their;
+            const revKey = their + '-' + your;
+            let compat = compatibilityData[key] || compatibilityData[revKey];
+            if (!compat) { compat = { score: 75, text: "两个星座的组合需要时间来验证缘分，请珍惜彼此！" }; }
+            document.getElementById('your-icon').textContent = zodiacData[your].icon;
+            document.getElementById('their-icon').textContent = zodiacData[their].icon;
+            document.getElementById('your-name').textContent = zodiacData[your].name;
+            document.getElementById('their-name').textContent = zodiacData[their].name;
+            document.getElementById('compat-score').textContent = compat.score + '%';
+            document.getElementById('compat-text').textContent = compat.text;
+            document.getElementById('compat-result').classList.add('show');
+        }
+    </script>
+</body>
+</html>
