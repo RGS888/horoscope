@@ -106,7 +106,8 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div class="nav-links">
 <a href="#" class="active" onclick="gt('home')">首页</a>
 <a href="#" onclick="gt('zodiac')">星座</a>
-<a href="#" onclick="gt('chinese')">生肖</a>
+<a href="#" onclick="gt('chinese')">生肖配对</a>
+<a href="#" onclick="gt('zodiacCN')">生肖运势</a>
 <a href="#" onclick="gt('face')">面相</a>
 <a href="#" onclick="gt('tarot')">塔罗</a>
 <a href="#" onclick="gt('stick')">抽签</a>
@@ -132,7 +133,8 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div class="feat" onclick="gt('tarot')"><div class="feat-icon">🃏</div><div class="feat-title">塔罗占卜</div><div class="feat-desc">心诚则灵，指点迷津</div></div>
 <div class="feat" onclick="gt('stick')"><div class="feat-icon">🎋</div><div class="feat-title">观音灵签</div><div class="feat-desc">求问前程，祈福解惑</div></div>
 <div class="feat" onclick="gt('fengshui')"><div class="feat-icon">🏠</div><div class="feat-title">风水布局</div><div class="feat-desc">家居调整，旺宅旺人</div></div>
-<div class="feat" onclick="gt('chinese')"><div class="feat-icon">🐉</div><div class="feat-title">生肖配对</div><div class="feat-desc">属相合婚，姻缘预测</div></div>
+<div class="feat" onclick="gt('chinese')"><div class="feat-icon">💕</div><div class="feat-title">生肖配对</div><div class="feat-desc">属相合婚，姻缘预测</div></div>
+<div class="feat" onclick="gt('zodiacCN')"><div class="feat-icon">🐉</div><div class="feat-title">生肖运势</div><div class="feat-desc">本命年运，趋吉避凶</div></div>
 </div>
 <div class="ad">📢 广告位招租 · 精准引流 · 联系作者获取报价</div>
 </div>
@@ -177,6 +179,44 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div style="text-align:center;margin:12px 0"><span id="cYi" style="font-size:2.8em">🐀</span><span style="font-size:1.6em;color:#ffd700;margin:0 12px">💕</span><span id="cTi" style="font-size:2.8em">🐉</span></div>
 <div style="text-align:center;font-size:1.9em;color:#ffd700;margin:8px 0" id="cS">92%</div>
 <div class="fortune-block" id="cT"></div>
+<div class="pay-section">
+<div class="pay-title">💰 解锁完整版配对分析</div>
+<div class="pay-desc">扫码支付 19.9 元，获取详细配对报告</div>
+<div class="pay-qr">
+<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 19.9元</div></div>
+<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
+</div>
+</div>
+</div>
+</div>
+<div id="zodiacCN" class="card hidden">
+<div class="sec-title">🐉 生肖每日运势</div>
+<div class="form-group">
+<label>选择你的生肖</label>
+<select id="zc"><option value="">请选择生肖</option><option value="鼠">🐀 鼠 - 机智灵活，财运亨通</option><option value="牛">🐂 牛 - 勤恳稳重，事业有成</option><option value="虎">🐅 虎 - 威猛霸气，贵人相助</option><option value="兔">🐇 兔 - 温和聪慧，人缘极佳</option><option value="龙">🐉 龙 - 尊贵吉祥，前程似锦</option><option value="蛇">🐍 蛇 - 智慧深沉，偏财运旺</option><option value="马">🐎 马 - 奔放自由，机遇不断</option><option value="羊">🐐 羊 - 温柔善良，家庭和睦</option><option value="猴">🐒 猴 - 聪明伶俐，创意无限</option><option value="鸡">🐓 鸡 - 勤劳务实，财源广进</option><option value="狗">🐕 狗 - 忠诚可靠，贵人扶持</option><option value="猪">🐖 猪 - 福气满满，生活富足</option></select>
+</div>
+<button class="btn" onclick="doZC()">查看今日运势 🐉</button>
+<div id="zcR" class="result">
+<div class="result-head">
+<div class="result-icon" id="zcI">🐀</div>
+<div class="result-title" id="zcN">鼠</div>
+<div class="result-sub" id="zcD"></div>
+</div>
+<div class="luck-grid">
+<div class="luck-item"><span class="luck-lbl">整体</span><span class="luck-val" id="zcO">★★★★★</span></div>
+<div class="luck-item"><span class="luck-lbl">爱情</span><span class="luck-val" id="zcL">★★★★☆</span></div>
+<div class="luck-item"><span class="luck-lbl">事业</span><span class="luck-val" id="zcC">★★★★☆</span></div>
+<div class="luck-item"><span class="luck-lbl">财运</span><span class="luck-val" id="zcM">★★★☆☆</span></div>
+</div>
+<div class="fortune-block" id="zcT"></div>
+<div class="pay-section">
+<div class="pay-title">💰 解锁完整版生肖运势</div>
+<div class="pay-desc">扫码支付 9.9 元，获取详细运势解读</div>
+<div class="pay-qr">
+<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 9.9元</div></div>
+<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
+</div>
+</div>
 </div>
 </div>
 <div id="face" class="card hidden">
@@ -278,40 +318,47 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 </div>
 
 <script>
-// Stars
+// Stars animation
 (function(){var s=document.getElementById("stars");for(var i=0;i<100;i++){var el=document.createElement("div");el.className="star";el.style.left=Math.random()*100+"%";el.style.top=Math.random()*100+"%";el.style.setProperty("--d",(Math.random()*3+2)+"s");el.style.animationDelay=Math.random()*3+"s";var sz=Math.random()*2+1;el.style.width=sz+"px";el.style.height=sz+"px";s.appendChild(el);}})();
 
 // Navigation
-function gt(id){var secs=["home","zodiac","chinese","face","tarot","stick","fengshui"];for(var i=0;i<secs.length;i++){var el=document.getElementById(secs[i]);if(el)el.classList.add("hidden");}var t=document.getElementById(id);if(t)t.classList.remove("hidden");document.querySelectorAll(".nav-links a").forEach(function(a){a.classList.remove("active");});var nm={home:"首页",zodiac:"星座",chinese:"生肖",face:"面相",tarot:"塔罗",stick:"抽签",fengshui:"风水"};document.querySelectorAll(".nav-links a").forEach(function(a){if(nm[id]&&a.textContent===nm[id])a.classList.add("active");});window.scrollTo({top:0,behavior:"smooth"});if(id==="face")initCam();if(id==="tarot")initTarot();}
+function gt(id){var secs=["home","zodiac","chinese","zodiacCN","face","tarot","stick","fengshui"];for(var i=0;i<secs.length;i++){var el=document.getElementById(secs[i]);if(el)el.classList.add("hidden");}var t=document.getElementById(id);if(t)t.classList.remove("hidden");document.querySelectorAll(".nav-links a").forEach(function(a){a.classList.remove("active");});window.scrollTo({top:0,behavior:"smooth"});if(id==="face")initCam();if(id==="tarot")initTarot();}
 
-// Zodiac data
+// ============ 星座运势 ============
 var zD={aries:{n:"白羊座",i:"♈",d:"3.21-4.19",e:"火"},taurus:{n:"金牛座",i:"♉",d:"4.20-5.20",e:"土"},gemini:{n:"双子座",i:"♊",d:"5.21-6.21",e:"风"},cancer:{n:"巨蟹座",i:"♋",d:"6.22-7.22",e:"水"},leo:{n:"狮子座",i:"♌",d:"7.23-8.22",e:"火"},virgo:{n:"处女座",i:"♍",d:"8.23-9.22",e:"土"},libra:{n:"天秤座",i:"♎",d:"9.23-10.23",e:"风"},scorpio:{n:"天蝎座",i:"♏",d:"10.24-11.22",e:"水"},sagittarius:{n:"射手座",i:"♐",d:"11.23-12.21",e:"火"},capricorn:{n:"摩羯座",i:"♑",d:"12.22-1.19",e:"土"},aquarius:{n:"水瓶座",i:"♒",d:"1.20-2.18",e:"风"},pisces:{n:"双鱼座",i:"♓",d:"2.19-3.20",e:"水"}};
-var zF={aries:{ov:"今日白羊座运势极佳！火星带来强大的行动力和勇气，适合主动出击。工作上有意外惊喜，财运亨通，桃花运旺盛。",lv:"单身者今日桃花运旺，有望遇到心动的对象。已有伴侣者感情升温，适合安排浪漫约会。",cv:"事业上贵人运强，工作表现会受到上级认可，可能有晋升或加薪机会。",mv:"财务状况良好，适合进行理性投资，可能有意外之财降临！"},taurus:{ov:"金牛座今日运势稳定！金星守护，让你财运和感情运都不错。适合处理财务相关事务。",lv:"感情运极佳，单身者有望遇到理想对象，已有伴侣者感情甜蜜。",cv:"工作稳定推进，适合处理需要耐心的事务。",mv:"财运亨通，可能有额外收入！"},gemini:{ov:"双子座今日思维活跃！水星带来智慧和沟通能力，适合谈判、学习新知识。",lv:"社交运旺盛，幽默感会吸引很多人。",cv:"创意十足，适合从事需要沟通和创意的工作。",mv:"理性消费，避免冲动购物。"},cancer:{ov:"巨蟹座今日情感丰富！月亮守护，适合内省和与家人朋友相处。",lv:"感情运极佳，适合与亲密的人共度时光。",cv:"工作稳定，适合处理需要细心和耐心的事务。",mv:"财运平稳，注意理财规划。"},leo:{ov:"狮子座今日自带光环！太阳照亮你的世界，今天是展现自我的好日子！",lv:"自信的你格外有魅力，感情运势上升。",cv:"事业上有亮眼表现，可能获得认可和赞赏。",mv:"财运势不可挡，但也要懂得分享。"},virgo:{ov:"处女座今日展现专业能力！细致和分析能力会得到充分发挥。",lv:"适合与伴侣一起规划未来，感情稳定。",cv:"工作上的努力会被上司看到，有晋升机会。",mv:"正财运稳定，适合存钱规划。"},libra:{ov:"天平座今日注重和谐与平衡，社交和建立人脉的好时机。",lv:"社交运佳，容易遇到理想对象，感情升温。",cv:"适合协调类工作，谈判运强。",mv:"财运平衡，消费理性。"},scorpio:{ov:"天蝎座今日洞察力敏锐！适合研究分析和深度探索。",lv:"感情深刻而强烈，容易陷入热恋。",cv:"适合需要深度分析的工作。",mv:"偏财运佳，可能有意外惊喜！"},sagittarius:{ov:"射手座今日木星赐福！外出旅行、哲学思考都会带来收获。",lv:"单身者有望在旅途中遇到缘分。",cv:"适合拓展业务，远程工作。",mv:"财运上升，投资运佳！"},capricorn:{ov:"摩羯座今日稳重务实！土星带来耐心，积累沉淀的好时机。",lv:"感情稳定，适合长期发展。",cv:"工作上有望突破瓶颈，获得认可。",mv:"正财运稳定，理财有道。"},aquarius:{ov:"水瓶座今日创新能力爆棚！独特思维会带来意想不到的收获。",lv:"有趣的灵魂吸引人，适合交新朋友。",cv:"适合创新类工作，创意受到赏识。",mv:"理财有新想法，可能发现新机会！"},pisces:{ov:"双鱼座今日灵感迸发！艺术创作或心灵成长都会很顺利。",lv:"感情丰富而浪漫，容易动心。",cv:"艺术相关工作运气极佳。",mv:"财运平稳，注意防范诈骗。"}};
+var zF={aries:{ov:"今日白羊座运势极佳！火星带来强大的行动力和勇气，适合主动出击。工作上有意外惊喜，财运亨通，桃花运旺盛。",lv:"单身者今日桃花运旺，有望遇到心动的对象。已有伴侣者感情升温，适合安排浪漫约会。",cv:"事业上贵人运强，工作表现会受到上级认可，可能有晋升或加薪机会。",mv:"财务状况良好，适合进行理性投资，可能有意外之财降临！"},taurus:{ov:"金牛座今日运势稳定！金星守护，让你财运和感情运都不错。适合处理财务相关事务。",lv:"感情运极佳，单身者有望遇到理想对象，已有伴侣者感情甜蜜。",cv:"工作稳定推进，适合处理需要耐心的事务。",mv:"财运亨通，可能有额外收入！"},gemini:{ov:"双子座今日思维活跃！水星带来智慧和沟通能力，适合谈判、学习新知识。",lv:"社交运旺盛，幽默感会吸引很多人。",cv:"创意十足，适合从事需要沟通和创意的工作。",mv:"理性消费，避免冲动购物。"},cancer:{ov:"巨蟹座今日情感丰富！月亮守护，适合内省和与家人朋友相处。",lv:"感情运极佳，适合与亲密的人共度时光。",cv:"工作稳定，适合处理需要细心和耐心的事务。",mv:"财运平稳，注意理财规划。"},leo:{ov:"狮子座今日自带光环！太阳照亮你的世界，今天是展现自我的好日子！",lv:"自信的你格外有魅力，感情运势上升。",cv:"事业上有亮眼表现，可能获得认可和赞赏。",mv:"财运势不可挡，但也要懂得分享。"},virgo:{ov:"处女座今日展现专业能力！细致和分析能力会得到充分发挥。",lv:"适合与伴侣一起规划未来，感情稳定。",cv:"工作上的努力会被上司看到，有晋升机会。",mv:"正财运稳定，适合存钱规划。"},libra:{ov:"天秤座今日注重和谐与平衡，社交和建立人脉的好时机。",lv:"社交运佳，容易遇到理想对象，感情升温。",cv:"适合协调类工作，谈判运强。",mv:"财运平衡，消费理性。"},scorpio:{ov:"天蝎座今日洞察力敏锐！适合研究分析和深度探索。",lv:"感情深刻而强烈，容易陷入热恋。",cv:"适合需要深度分析的工作。",mv:"偏财运佳，可能有意外惊喜！"},sagittarius:{ov:"射手座今日木星赐福！外出旅行、哲学思考都会带来收获。",lv:"单身者有望在旅途中遇到缘分。",cv:"适合拓展业务，远程工作。",mv:"财运上升，投资运佳！"},capricorn:{ov:"摩羯座今日稳重务实！土星带来耐心，积累沉淀的好时机。",lv:"感情稳定，适合长期发展。",cv:"工作上有望突破瓶颈，获得认可。",mv:"正财运稳定，理财有道。"},aquarius:{ov:"水瓶座今日创新能力爆棚！独特思维会带来意想不到的收获。",lv:"有趣的灵魂吸引人，适合交新朋友。",cv:"适合创新类工作，创意受到赏识。",mv:"理财有新想法，可能发现新机会！"},pisces:{ov:"双鱼座今日灵感迸发！艺术创作或心灵成长都会很顺利。",lv:"感情丰富而浪漫，容易动心。",cv:"艺术相关工作运气极佳。",mv:"财运平稳，注意防范诈骗。"}};
 
 function gS(s){var v=(s%35)+65;return "★".repeat(Math.ceil(v/20))+"☆".repeat(5-Math.ceil(v/20));}
 function doZ(){var s=document.getElementById("zs").value;if(!s){alert("请选择星座");return}var d=zD[s];var f=zF[s];var seed=new Date().getDate()*s.charCodeAt(0);document.getElementById("zI").textContent=d.i;document.getElementById("zN").textContent=d.n;document.getElementById("zD").textContent=d.d+" · "+d.e+"象星座";document.getElementById("zO").textContent=gS(seed);document.getElementById("zL").textContent=gS(seed+1);document.getElementById("zC").textContent=gS(seed+2);document.getElementById("zM").textContent=gS(seed+3);document.getElementById("zT").innerHTML="<h4>📊 今日运势详解</h4>"+f.ov+"<br><br><h4>💕 爱情运势</h4>"+f.lv+"<br><br><h4>💼 事业运势</h4>"+f.cv+"<br><br><h4>💰 财运运势</h4>"+f.mv;document.getElementById("zR").classList.add("show")}
 
-// Chinese zodiac
+// ============ 生肖配对 ============
 var cnD={鼠:"🐀",牛:"🐂",虎:"🐅",兔:"🐇",龙:"🐉",蛇:"🐍",马:"🐎",羊:"🐐",猴:"🐒",鸡:"🐓",狗:"🐕",猪:"🐖"};
-var cnP={"鼠-龙":{s:95,t:"鼠与龙是六合之一，堪称天作之合！性格互补，感情深厚。"},"鼠-猴":{s:90,t:"鼠与猴是三合吉配，默契十足！创意无限，适合一起创业。"},"兔-羊":{s:95,t:"兔与羊是三合吉配，温情脉脉，感情融洽。"},"虎-马":{s:95,t:"虎与马是三合之一，同属火性，热情洋溢！"},"龙-鼠":{s:95,t:"龙与鼠是六合绝配！鼠的智慧能辅佐龙的霸气。"},"龙-猴":{s:90,t:"龙与猴是三合吉配，智慧与力量的结合！"},"蛇-鸡":{s:90,t:"蛇与鸡是三合吉配，注重品质，相处和谐。"},"马-狗":{s:90,t:"马与狗是三合吉配，正义搭档，忠诚可靠！"},"猪-兔":{s:92,t:"猪与兔是三合绝配，温馨甜蜜，互相包容。"}};
-function doC(){var y=document.getElementById("cy").value;var t=document.getElementById("ct").value;if(!y||!t){alert("请选择两个生肖");return}document.getElementById("cYi").textContent=cnD[y];document.getElementById("cTi").textContent=cnD[t];var k=y+"-"+t;var k2=t+"-"+y;var p=cnP[k]||cnP[k2];if(!p)p={s:70+(y.charCodeAt(0)+t.charCodeAt(0))%20,t:"生肖相配程度中等。你们的组合需要时间来磨合，但只要互相理解，感情和事业都能稳步发展。"};document.getElementById("cS").textContent=p.s+"%";document.getElementById("cT").innerHTML=p.t+"<br><br><strong>💡 相处建议：</strong>多站在对方角度思考，互相支持，共同成长。";document.getElementById("cR").classList.add("show")}
+var cnP={"鼠-龙":{s:98,t:"鼠与龙是六合绝配，天作之合！",d:"【性格互补】鼠的机智灵活与龙的霸气果敢完美结合，鼠能辅佐龙的决策，龙能保护鼠的安全。<br><br>【感情运势】彼此吸引力极强，一见钟情几率高。婚后生活和谐美满，是令人羡慕的神仙眷侣。<br><br>【事业合作】鼠的精明能干配合龙的魄力，创业合作无往不利，财运亨通。<br><br>【相处建议】龙偶尔需要照顾鼠的感受，鼠也要学会适当表达自己的想法。"},"鼠-猴":{s:95,t:"鼠与猴是三合吉配，默契十足！",d:"【性格特点】双方都聪明伶俐，思维敏捷，沟通无障碍，总有聊不完的话题。<br><br>【感情方面】相处充满乐趣，猴的幽默感让鼠开心，鼠的温柔让猴安心。<br><br>【事业财运】创意无限，适合一起创业或投资，往往能发现别人看不到的商机。<br><br>【注意事项】猴有时候花心，需要鼠的包容；鼠有时候敏感，需要猴的体贴。"},"鼠-牛":{s:85,t:"鼠与牛是六合之配，稳重踏实！",d:"【性格分析】鼠的机灵与牛的稳重形成互补，一个负责创意，一个负责执行。<br><br>【感情生活】牛的踏实给鼠安全感，鼠的活泼给牛带来生活乐趣。<br><br>【家庭运势】婚后家庭和睦，牛负责稳定，鼠负责精打细算，日子越过越红火。<br><br>【相处之道】鼠需要理解牛的慢热，牛也要接受鼠的小脾气。"},"牛-蛇":{s:92,t:"牛与蛇是三合吉配，情深意重！",d:"【性格契合】牛的勤恳与蛇的智慧相得益彰，蛇能帮牛分析形势，牛能帮蛇落实计划。<br><br>【感情运势】彼此欣赏，蛇欣赏牛的踏实，牛欣赏蛇的智慧。感情稳定长久。<br><br>【财富运势】合作生财有道，蛇的投资眼光配合牛的执行能力，财运亨通。<br><br>【注意事项】蛇有时候过于敏感，牛需要多沟通。"},"牛-鸡":{s:90,t:"牛与鸡是三合吉配，相得益彰！",d:"【性格分析】牛的勤劳与鸡的务实相结合，都是实干家，目标一致。<br><br>【感情方面】鸡的细心体贴让牛感动，牛的稳重让鸡有安全感。<br><br>【家庭生活】婚后分工明确，日子井井有条，是令人羡慕的模范夫妻。<br><br>【相处建议】鸡有时候过于挑剔，牛需要包容。"},"虎-马":{s:95,t:"虎与马是三合吉配，热情奔放！",d:"【性格特点】都属火象，性格相投，都热情开朗，充满活力。<br><br>【感情运势】一见如故，相处充满激情，是令人羡慕的热血情侣。<br><br>【事业合作】都敢想敢干，适合一起创业闯荡，但要注意控制风险。<br><br>【注意事项】双方都冲动，需要学会冷静沟通。"},"虎-狗":{s:92,t:"虎与狗是三合吉配，忠诚可靠！",d:"【性格分析】虎的霸气与狗的忠诚形成完美组合，虎负责冲锋，狗负责守护。<br><br>【感情方面】狗的忠诚让虎感动，虎的保护欲让狗安心。<br><br>【家庭运势】婚后虎主外狗主内，分工明确，家庭和睦。<br><br>【相处之道】虎有时候太强势，需要照顾狗的感受。"},"兔-羊":{s:95,t:"兔与羊是三合吉配，温情脉脉！",d:"【性格特点】都属温和型，性格相近，相处融洽，很少吵架。<br><br>【感情运势】彼此温柔体贴，感情细腻，是人人羡慕的恩爱夫妻。<br><br>【家庭生活】家庭氛围温馨，喜欢艺术和美好的事物，生活有品质。<br><br>【注意事项】都比较敏感，遇事需要多沟通。"},"兔-猪":{s:92,t:"兔与猪是三合吉配，幸福美满！",d:"【性格分析】兔的温柔与猪的善良相结合，都重感情，珍惜家庭。<br><br>【感情方面】相处轻松愉快，猪的乐观感染兔，兔的细心照顾猪。<br><br>【财富运势】猪的财运配合兔的精打细算，日子越过越富裕。<br><br>【相处建议】猪有时候懒惰，兔需要督促。"},"龙-猴":{s:95,t:"龙与猴是三合吉配，智慧与力量的结合！",d:"【性格特点】都聪明过人，思维敏捷，互相欣赏，惺惺相惜。<br><br>【感情运势】龙的魅力吸引猴，猴的聪明让龙欣赏，是天造地设的一对。<br><br>【事业合作】龙的魄力加猴的智慧，合作事业必成大器。<br><br>【注意事项】龙有时候太霸道，猴需要学会妥协。"},"龙-鼠":{s:98,t:"龙与鼠是六合绝配，龙凤呈祥！",d:"【性格契合】龙的霸气与鼠的机智完美互补，龙需要鼠的辅佐，鼠需要龙的保护。<br><br>【感情运势】彼此吸引力极强，龙欣赏鼠的聪明，鼠崇拜龙的能力。<br><br>【家庭生活】婚后龙主外鼠主内，配合默契，家庭兴旺。<br><br>【相处之道】龙有时候忽略细节，鼠可以补充。"},"蛇-鸡":{s:92,t:"蛇与鸡是三合吉配，追求完美！",d:"【性格分析】都追求完美，注重品质，眼光独到，品味相近。<br><br>【感情运势】彼此欣赏对方的品味和眼光，相处有聊不完的话题。<br><br>【事业财运】蛇的投资眼光配合鸡的理财能力，财富稳步增长。<br><br>【注意事项】都比较挑剔，需要学会包容。"},"马-羊":{s:90,t:"马与羊是六合吉配，温柔与热情的碰撞！",d:"【性格特点】马的奔放与羊的温柔相结合，一动一静，刚好互补。<br><br>【感情运势】马的热情感染羊，羊的温柔安抚马，感情甜蜜。<br><br>【家庭生活】婚后生活多彩，马负责打拼，羊负责持家。<br><br>【相处建议】马需要多陪伴羊，羊也要支持马的事业。"},"马-狗":{s:92,t:"马与狗是三合吉配，志同道合！",d:"【性格分析】都正直善良，有正义感，价值观一致。<br><br>【感情方面】狗的忠诚让马安心，马的热情让狗开心。<br><br>【事业合作】都重情重义，合作做生意讲诚信，容易成功。<br><br>【注意事项】马有时候太直率，狗需要理解。"},"羊-猪":{s:88,t:"羊与猪是三合吉配，温馨幸福！",d:"【性格特点】都善良温和，重感情，家庭观念强。<br><br>【感情运势】相处温馨甜蜜，羊的细腻与猪的体贴相得益彰。<br><br>【家庭生活】婚后家庭和睦，都喜欢宅在家里，享受温馨时光。<br><br>【注意事项】都比较被动，需要主动表达感情。"},"猴-鼠":{s:95,t:"猴与鼠是三合吉配，聪明绝顶！",d:"【性格分析】都聪明伶俐，思维敏捷，相处充满乐趣。<br><br>【感情运势】猴的幽默让鼠开心，鼠的聪明让猴欣赏。<br><br>【事业合作】都是点子王，合作创意无限，但要注意执行。<br><br>【注意事项】猴有时候花心，鼠需要看紧。"},"鸡-牛":{s:90,t:"鸡与牛是三合吉配，勤劳致富！",d:"【性格特点】都勤劳务实，脚踏实地，不投机取巧。<br><br>【感情运势】鸡的细心与牛的稳重相结合，感情稳定长久。<br><br>【财富运势】勤劳致富，通过努力积累财富，日子越过越好。<br><br>【相处之道】鸡有时候太挑剔，牛需要包容。"},"鸡-蛇":{s:92,t:"鸡与蛇是三合吉配，精明能干！",d:"【性格分析】都精明能干，善于理财，眼光独到。<br><br>【感情方面】蛇的深沉吸引鸡，鸡的活力感染蛇。<br><br>【事业财运】都擅长理财投资，合作财运亨通。<br><br>【注意事项】都比较敏感，遇事多沟通。"},"狗-虎":{s:92,t:"狗与虎是三合吉配，忠诚守护！",d:"【性格特点】狗的忠诚与虎的霸气相结合，一守一攻。<br><br>【感情运势】虎的保护欲让狗安心，狗的忠诚让虎感动。<br><br>【家庭生活】婚后虎主外狗主内，家庭和睦，孩子教育有方。<br><br>【相处建议】虎需要多倾听狗的意见。"},"狗-马":{s:92,t:"狗与马是三合吉配，正义联盟！",d:"【性格分析】都正直善良，有正义感，价值观一致。<br><br>【感情方面】马的奔放让狗开心，狗的忠诚让马安心。<br><br>【事业合作】都讲诚信，合作做生意容易成功。<br><br>【注意事项】马有时候太冲动，狗需要提醒。"},"猪-兔":{s:92,t:"猪与兔是三合吉配，甜蜜温馨！",d:"【性格特点】都善良温和，重感情，珍惜家庭。<br><br>【感情运势】相处甜蜜，猪的乐观感染兔，兔的细腻照顾猪。<br><br>【家庭生活】婚后家庭温馨，都喜欢平淡的幸福。<br><br>【相处建议】猪有时候懒惰，兔需要督促。"},"猪-羊":{s:88,t:"猪与羊是三合吉配，温暖相伴！",d:"【性格分析】都温和善良，不爱争吵，相处融洽。<br><br>【感情方面】羊的细腻与猪的善良相得益彰，感情温馨。<br><br>【家庭运势】家庭和睦，都有艺术细胞，生活有品质。<br><br>【注意事项】都比较被动，需要主动表达。"}};
 
-// Tarot
+function doC(){var y=document.getElementById("cy").value;var t=document.getElementById("ct").value;if(!y||!t){alert("请选择两个生肖");return}document.getElementById("cYi").textContent=cnD[y];document.getElementById("cTi").textContent=cnD[t];var k=y+"-"+t;var k2=t+"-"+y;var p=cnP[k]||cnP[k2];if(!p)p={s:70+(y.charCodeAt(0)+t.charCodeAt(0))%20,t:"生肖相配程度中等",d:"【性格分析】你们的性格有互补也有相似之处，需要时间磨合。<br><br>【感情运势】感情发展需要双方的努力和理解，沟通是关键。<br><br>【相处建议】多站在对方角度思考，互相尊重，求同存异。<br><br>【注意事项】遇到分歧时冷静处理，不要冲动行事。"};document.getElementById("cS").textContent=p.s+"%";document.getElementById("cT").innerHTML="<h4>"+p.t+"</h4>"+p.d+"<br><br><strong>💡 总体评价：</strong>"+(p.s>=90?"天作之合，珍惜缘分！":p.s>=80?"良配佳缘，幸福美满！":p.s>=70?"中等相配，需要经营！":"需要磨合，用心相处！");document.getElementById("cR").classList.add("show")}
+
+// ============ 生肖运势 ============
+var zcD={鼠:{n:"鼠",i:"🐀",e:"水",p:"机智灵活、善于理财、适应力强"},牛:{n:"牛",i:"🐂",e:"土",p:"勤恳踏实、任劳任怨、稳重可靠"},虎:{n:"虎",i:"🐅",e:"木",p:"威猛霸气、勇敢果断、领导力强"},兔:{n:"兔",i:"🐇",e:"木",p:"温柔细腻、心思缜密、人缘极佳"},龙:{n:"龙",i:"🐉",e:"土",p:"尊贵吉祥、志向远大、气场强大"},蛇:{n:"蛇",i:"🐍",e:"火",p:"智慧深沉、洞察力强、直觉敏锐"},马:{n:"马",i:"🐎",e:"火",p:"奔放自由、热情开朗、行动力强"},羊:{n:"羊",i:"🐐",e:"土",p:"温柔善良、富有同情心、艺术天赋"},猴:{n:"猴",i:"🐒",e:"金",p:"聪明伶俐、反应敏捷、创意无限"},鸡:{n:"鸡",i:"🐓",e:"金",p:"勤劳务实、注重细节、精打细算"},狗:{n:"狗",i:"🐕",e:"土",p:"忠诚可靠、正义感强、责任感重"},猪:{n:"猪",i:"🐖",e:"水",p:"善良宽厚、福气满满、乐观豁达"}};
+var zcF={鼠:{ov:"今日鼠人运势大吉！子水当令，财运亨通，贵人运旺，适合开展新项目。贵人方向：东北、西南。",lv:"桃花运旺盛，单身鼠人有望遇到心仪对象；已婚者感情甜蜜，适合二人世界。",cv:"工作中会有贵人相助，问题迎刃而解；适合洽谈合作，签约顺利。",mv:"正财偏财皆旺，投资眼光准确，可能有意外收获！建议理财方向：水属性行业。"},牛:{ov:"今日牛人运势稳定！丑土生金，适合稳扎稳打，不宜冒进。贵人方向：西方、南方。",lv:"感情运势平稳，已婚者家庭和睦；单身者可多参加社交活动增加机会。",cv:"工作按部就班，适合处理积累已久的事务；耐心会有回报。",mv:"正财运佳，偏财平平；适合稳健理财，不宜投机。"},虎:{ov:"今日虎人运势上升！寅木生发，贵人运强，适合主动出击。贵人方向：东方、北方。",lv:"魅力四射，异性缘极佳；单身者大胆表白有望成功，已婚者感情升温。",cv:"事业上机遇多，敢于表现自己会得到认可；适合谈判、演讲。",mv:"财运上扬，偏财运佳，可能有意外之财；适合投资创新领域。"},兔:{ov:"今日兔人运势良好！卯木柔和，人缘运旺，适合社交活动。贵人方向：东南、西北。",lv:"感情甜蜜，与伴侣相处融洽；单身者可在社交场合遇到良缘。",cv:"工作中人际关系和谐，适合团队协作；贵人会暗中相助。",mv:"财运平稳，适合小额投资；花钱要有计划，避免冲动消费。"},龙:{ov:"今日龙人运势极佳！辰土当令，气场强大，适合重要场合。贵人方向：东南、正南。",lv:"桃花运旺，魅力无法阻挡；单身者有望遇到优质对象，已婚者浪漫指数飙升。",cv:"事业上有突破机会，领导会看到你的努力；适合争取重要项目。",mv:"财运势不可挡，正财偏财双丰收；但也要懂得分享，积善之家必有余庆。"},蛇:{ov:"今日蛇人运势上升！巳火生土，智慧大开，适合深度思考。贵人方向：南方、西方。",lv:"感情运佳，异性缘好；单身者有望遇到志同道合的人，已婚者默契十足。",cv:"工作中洞察力强，能发现别人忽略的机会；适合策划、研究类工作。",mv:"偏财运旺，投资眼光准确；但不宜贪婪，适可而止。"},马:{ov:"今日马人运势活跃！午火当令，精力充沛，适合外出活动。贵人方向：南方、东方。",lv:"感情热烈，充满激情；单身者有望在旅途中遇到缘分，已婚者适合约会。",cv:"事业上有机会表现自己，敢于创新会得到赏识；适合拓展业务。",mv:"财运起伏较大，正财尚可，偏财需谨慎；不宜大额投资。"},羊:{ov:"今日羊人运势平稳！未土生金，心态平和，适合修身养性。贵人方向：西南、北方。",lv:"感情温馨，与伴侣相处和谐；单身者可在艺术活动中遇到有缘人。",cv:"工作中稳中求进，适合处理细节事务；贵人运在暗处。",mv:"财运平稳，适合稳健理财；购物要理性，避免情绪消费。"},猴:{ov:"今日猴人运势大吉！申金生水，思维敏捷，创意无限。贵人方向：西方、东南。",lv:"魅力指数爆表，异性缘极佳；单身者桃花朵朵开，已婚者浪漫满屋。",cv:"事业上创意不断，解决问题的能力突出；适合谈判、策划。",mv:"财运亨通，投资灵感准确；适合尝试新的理财方式。"},鸡:{ov:"今日鸡人运势良好！酉金当令，精明能干，适合理财规划。贵人方向：西方、北方。",lv:"感情运势上升，与伴侣沟通顺畅；单身者可多参加社交活动。",cv:"工作中细心负责，会被领导认可；适合处理财务、文书类事务。",mv:"财运佳，正财偏财皆可；理财规划得当会有收获。"},狗:{ov:"今日狗人运势上升！戌土生金，贵人运强，适合团队合作。贵人方向：西北、东方。",lv:"感情忠诚稳定，与伴侣互信加深；单身者可在朋友介绍下遇到良缘。",cv:"事业上有贵人相助，困难会迎刃而解；适合配合他人完成任务。",mv:"财运平稳，正财尚可；适合为未来做储蓄规划。"},猪:{ov:"今日猪人运势大吉！亥水生木，福气满满，心情愉悦。贵人方向：西北、西南。",lv:"感情甜蜜，与伴侣相处愉快；单身者有望遇到温柔体贴的人。",cv:"工作中运气好，事半功倍；适合轻松愉快的工作氛围。",mv:"财运亨通，有意外惊喜；适合享受生活，犒劳自己。"}};
+
+function doZC(){var s=document.getElementById("zc").value;if(!s){alert("请选择生肖");return}var d=zcD[s];var f=zcF[s];var seed=new Date().getDate()*s.charCodeAt(0);document.getElementById("zcI").textContent=d.i;document.getElementById("zcN").textContent=d.n;document.getElementById("zcD").textContent=d.e+"象生肖 · "+d.p;document.getElementById("zcO").textContent=gS(seed);document.getElementById("zcL").textContent=gS(seed+1);document.getElementById("zcC").textContent=gS(seed+2);document.getElementById("zcM").textContent=gS(seed+3);document.getElementById("zcT").innerHTML="<h4>📊 今日运势详解</h4>"+f.ov+"<br><br><h4>💕 爱情运势</h4>"+f.lv+"<br><br><h4>💼 事业运势</h4>"+f.cv+"<br><br><h4>💰 财运运势</h4>"+f.mv;document.getElementById("zcR").classList.add("show")}
+
+// ============ 塔罗占卜 ============
 var tarot=[{n:"愚人",i:"0",d:"愚人象征纯真的开始，代表新的旅程，呼唤你追随内心，勇敢迈出第一步。",a:"正位：勇敢尝试新事物，把握机遇。逆位：过于冒险，缺乏计划。"},{n:"魔术师",i:"I",d:"魔术师掌握万物元素，代表你拥有实现愿望的所有能力。",a:"正位：心想事成，创造力爆发。逆位：缺乏行动力，机会流失。"},{n:"女祭司",i:"II",d:"女祭司代表直觉与神秘智慧，提示你倾听内心的声音。",a:"正位：相信直觉，智慧涌现。逆位：隐瞒真相，缺乏信心。"},{n:"女皇",i:"III",d:"女皇是丰收与富足的象征，代表温柔的力量与自然恩赐。",a:"正位：财运亨通，感情甜蜜。逆位：过于依赖，缺乏安全感。"},{n:"皇帝",i:"IV",d:"皇帝代表权威与秩序，是领导与决断的象征。",a:"正位：事业上升，获得权威认可。逆位：过于严苛，缺乏灵活性。"},{n:"恋人",i:"VI",d:"恋人牌象征爱情与选择，面临重大抉择时跟随内心。",a:"正位：感情甜蜜，贵人相助。逆位：犹豫不决，关系紧张。"},{n:"命运之轮",i:"X",d:"命运之轮转动不息，暗示命运的转变与周期循环。",a:"正位：好运降临，转机出现。逆位：运势低迷，需耐心等待。"},{n:"正义",i:"XI",d:"正义代表公正与平衡，行为会带来相应的结果。",a:"正位：公道自在人心，因果报应。逆位：偏心不公，需反省自身。"},{n:"死神",i:"XIII",d:"死神并非真正的死亡，而是旧事物的终结与新生的开始。",a:"正位：放下过去，迎接新生。逆位：抗拒改变，错失良机。"},{n:"星星",i:"XVII",d:"星星是希望与灵感的象征，黑夜后的曙光。",a:"正位：希望重燃，目标明确。逆位：失去信心，需重建信念。"},{n:"月亮",i:"XVIII",d:"月亮代表恐惧与幻觉，提示你面对内心的阴影。",a:"正位：直觉敏锐，创造力丰富。逆位：迷茫困惑，需冷静思考。"},{n:"太阳",i:"XIX",d:"太阳是成功与喜悦的象征，生命的高光时刻。",a:"正位：诸事顺遂，前途光明。逆位：暂时的阴霾，保持乐观。"},{n:"世界",i:"XXI",d:"世界代表完结与成就，一个阶段的圆满结束。",a:"正位：梦想成真，大功告成。逆位：尚未完成，仍需努力。"}];
 var selT=[];
 function initTarot(){var sp=document.getElementById("tSp");if(sp.children.length>0)return;sp.innerHTML="";for(var i=0;i<3;i++){var sl=document.createElement("div");sl.className="t-slot";sl.onclick=(function(idx){return function(){selTC(idx,this)}})(i);sl.innerHTML="❓<small>"+["过去","现在","未来"][i]+"</small>";sp.appendChild(sl)}selT=[null,null,null]}
 function selTC(idx,el){if(selT.filter(function(x){return x!==null}).length>=3&&selT[idx]===null)return;var c=tarot[Math.floor(Math.random()*tarot.length)];selT[idx]=c;el.classList.add("selected");el.innerHTML='<span style="font-size:1.7em">'+c.i+"</span><small>"+c.n+"</small>"}
 function doT(){var v=selT.filter(function(x){return x!==null});if(v.length<3){alert("请选择3张牌");return}var pos=["过去 · "+v[0].n,"现在 · "+v[1].n,"未来 · "+v[2].n];var txts=v.map(function(c,i){return"<h4>"+pos[i]+"</h4>"+c.d+"<br><strong>"+c.a+"</strong>"});document.getElementById("tT").innerHTML=txts.join("<br><br>");document.getElementById("tR").classList.add("show")}
 
-// Sticks
+// ============ 观音灵签 ============
 var sticks=[{g:"🌟",t:"上上签",n:"第1签·钟离得道",x:"云开日出自分明，枯木逢春再发荣。莫道春风消息晚，花开还有旧时红。<br><br><strong>解：</strong>此签大吉，诸事顺遂。求财得财，求名得名，所求皆如愿。"},{g:"🌟",t:"上上签",n:"第2签·太乙收魔",x:"巍巍道德五千言，行满功成朝玉阙，骑鸾跨鹤上青天。<br><br><strong>解：</strong>此签大吉，贵人相助，名利双收。"},{g:"🌸",t:"上中签",n:"第3签·秦美弄玉",x:"龙潜大泽跃深渊，雾暗云深不见天。若得风雷消息到，一声雷震动山川。<br><br><strong>解：</strong>此签上吉，先难后易，时运将至。"},{g:"🌸",t:"上中签",n:"第4签·苏秦刺股",x:"刺股悬梁苦读书，一朝得遂风雷便，雁塔题名大丈夫。<br><br><strong>解：</strong>此签中吉，学业进步，需持之以恒。"},{g:"🌙",t:"中上签",n:"第5签·东郊赏花",x:"东郊二月草初生，桃李无言亦有情。莫怪春风消息晚，花开原不负芳名。<br><br><strong>解：</strong>此签中吉，名利迟来，需耐心等待。"},{g:"⛰",t:"中平签",n:"第6签·颜回安贫",x:"一簞食尽乐融融，瓢饮居中有古风。莫道颜回贫彻骨，工夫到此自然通。<br><br><strong>解：</strong>此签平吉，知足常乐。"},{g:"⚡",t:"下下签",n:"第7签·曹操困蜀",x:"曹操千里走单骑，夜走麦城实可悲。不是关公重义气，谁肯舍死救其危。<br><br><strong>解：</strong>此签下凶，运势低迷，宜守不宜动。"}];
 function doS(){var idx=Math.floor(Math.random()*sticks.length);var s=sticks[idx];var type=document.getElementById("sT").value;document.getElementById("sG").textContent=s.g;document.getElementById("sTi").textContent=s.t;document.getElementById("sN").textContent=s.n+" · 求"+type;document.getElementById("sT2").innerHTML="<h4>签文</h4>"+s.x;document.getElementById("sR").classList.add("show")}
 
-// Fengshui
+// ============ 风水布局 ============
 var ftips={东:{n:"东门（紫气东来）",b:"正北、正南",g:"东方是贵人方位，利事业发展，适合摆放绿色植物。",t:"大门朝东忌正对墙角或路冲，可挂山水画化解。"},南:{n:"南门（贵人临门）",b:"正东、东南",g:"南方利名声和学业，适合摆放文昌塔或书籍。",t:"南方忌摆放尖角物品，以免口舌是非。"},西:{n:"西门（白虎方位）",b:"正北、正东",g:"西方财位，宜放金蟾或聚宝盆。",t:"西方忌堆放杂物，保持整洁方可聚财。"},北:{n:"北门（玄武守护）",b:"正南、正西",g:"北方利事业和官运，适合摆放马形饰品。",t:"北方忌有厕所或厨房污水口，易漏财。"},东南:{n:"东南门（财星高照）",b:"正西、西北",g:"东南方是财位，宜放招财猫或金元宝。",t:"东南方忌摆放假花或干花，影响财运。"},西南:{n:"西南门（姻缘吉位）",b:"正北、正东",g:"西南方利姻缘和感情，宜放鸳鸯或粉晶。",t:"西南方忌摆放锐利物品，影响感情和谐。"}};
 function doF(){var z=document.getElementById("fZ").value;var d=document.getElementById("fD").value;var t=document.getElementById("fT").value;if(!z){alert("请选择生肖");return}var info=ftips[d];document.getElementById("fSub").textContent=z+"年 · "+info.n+" · "+t+"户型";document.getElementById("fTxt").innerHTML="<h4>🏠 吉位分析</h4>大门朝"+info.n+"。您的财位在"+info.b+"方向，建议在此方位摆放相关风水物品以增强运势。<br><br><h4>🌿 开运植物</h4>建议在财位摆放绿萝、发财树或富贵竹，有助于提升财运。";document.getElementById("fTab").innerHTML="<h4>⚠️ 注意事项</h4>"+info.t;document.getElementById("fAdv2").innerHTML="1. 保持大门周围整洁通畅<br>2. 财位避免堆放杂物<br>3. 每天清晨开窗换气<br>4. 每月十五烧香祈福";document.getElementById("fR2").classList.add("show")}
 
-// Face
+// ============ AI面相 ============
 var faceStream=null;
 function initCam(){var btn=document.getElementById("snapBtn");if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){document.getElementById("cTip").innerHTML="📷<br>正在启动...";navigator.mediaDevices.getUserMedia({video:{facingMode:"user"}}).then(function(stream){faceStream=stream;document.getElementById("v").srcObject=stream;document.getElementById("cTip").innerHTML="✅ 已启动<br>确认光线后点击下方按钮";btn.disabled=false}).catch(function(){document.getElementById("cTip").innerHTML="❌ 无法访问摄像头<br>请检查权限设置"})}}
 function snapF(){if(!faceStream){alert("请先启动摄像头");return}var canvas=document.getElementById("cv");var video=document.getElementById("v");canvas.width=video.videoWidth;canvas.height=video.videoHeight;var ctx=canvas.getContext("2d");ctx.drawImage(video,0,0);document.getElementById("fLd").classList.remove("hidden");document.getElementById("fR").classList.remove("show");setTimeout(function(){generateFaceReport()},2000)}
