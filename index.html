@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🔮 玄学殿堂 · AI面相塔罗风水星座生肖</title>
+<title>🔮 玄学殿堂 · AI面相塔罗风水星座生肖起名</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#0a0a15;min-height:100vh;color:#e8e0d5;overflow-x:hidden}
@@ -11,6 +11,15 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#0a0a15;m
 .stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d) infinite}
 @keyframes twinkle{0%,100%{opacity:.1}50%{opacity:1;transform:scale(1.5)}}
+
+/* 滚动成交通知 */
+.order-bar{position:fixed;top:0;left:0;width:100%;z-index:999;background:linear-gradient(90deg,#ff6b00,#ff0000,#ff6b00);padding:8px 0;overflow:hidden;box-shadow:0 2px 15px rgba(255,0,0,.3)}
+.order-inner{display:flex;animation:scrollLeft 20s linear infinite}
+.order-item{white-space:nowrap;padding:0 40px;color:#fff;font-size:.88em;display:flex;align-items:center;gap:8px}
+.order-item span{color:#ffe0a0;font-weight:bold}
+.order-item .time{color:#ffd0a0;font-size:.78em}
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
 nav{position:sticky;top:0;z-index:100;background:rgba(10,10,21,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,215,0,.1);padding:11px 0}
 .nav-inner{max-width:960px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .nav-logo{font-size:1.35em;background:linear-gradient(135deg,#ffd700,#ff6b6b,#c77dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:bold}
@@ -18,161 +27,173 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,10,21,.92);backdrop-fil
 .nav-links a{color:#a09080;text-decoration:none;padding:5px 10px;border-radius:20px;font-size:.82em;transition:all .3s;border:1px solid transparent}
 .nav-links a:hover,.nav-links a.active{color:#ffd700;background:rgba(255,215,0,.08);border-color:rgba(255,215,0,.2)}
 .container{max-width:960px;margin:0 auto;padding:18px}
-header{text-align:center;padding:32px 18px}
-.emblem{font-size:3.8em;margin-bottom:11px;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(255,215,0,.4))}
+header{text-align:center;padding:28px 18px 14px}
+.emblem{font-size:3.5em;margin-bottom:9px;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(255,215,0,.4))}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-h1{font-size:2.4em;background:linear-gradient(135deg,#ffd700 0%,#ff6b6b 40%,#c77dff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:7px;letter-spacing:4px}
-.sub{color:#8a8070;font-size:.93em}
-.badges{display:flex;justify-content:center;gap:6px;margin-top:10px;flex-wrap:wrap}
-.badge{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:3px 10px;border-radius:20px;font-size:.73em;color:#c0a060}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:20px 0}
-.feat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:15px;text-align:center;transition:all .3s;cursor:pointer}
+h1{font-size:2.2em;background:linear-gradient(135deg,#ffd700 0%,#ff6b6b 40%,#c77dff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;letter-spacing:4px}
+.sub{color:#8a8070;font-size:.9em}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:16px 0}
+.feat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;text-align:center;transition:all .3s;cursor:pointer}
 .feat:hover{background:rgba(255,215,0,.05);border-color:rgba(255,215,0,.2);transform:translateY(-3px)}
-.feat-icon{font-size:1.9em;margin-bottom:6px}
-.feat-title{color:#ffd700;font-size:.93em;margin-bottom:3px}
-.feat-desc{color:#706050;font-size:.78em}
-.card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:18px;padding:24px;margin-bottom:18px}
-.sec-title{font-size:1.35em;color:#ffd700;margin-bottom:15px}
+.feat-icon{font-size:1.8em;margin-bottom:5px}
+.feat-title{color:#ffd700;font-size:.9em;margin-bottom:3px}
+.feat-desc{color:#706050;font-size:.75em}
+.card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:18px;padding:22px;margin-bottom:16px}
+.sec-title{font-size:1.3em;color:#ffd700;margin-bottom:14px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-group{margin-bottom:12px}
-label{display:block;margin-bottom:5px;font-size:.88em;color:#b0a090}
-select,input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#e8e0d5;font-size:1em;outline:none;transition:all .3s}
+.form-group{margin-bottom:11px}
+label{display:block;margin-bottom:4px;font-size:.86em;color:#b0a090}
+select,input{width:100%;padding:10px 11px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#e8e0d5;font-size:1em;outline:none;transition:all .3s}
 select:focus,input:focus{border-color:#ffd700;box-shadow:0 0 0 3px rgba(255,215,0,.1)}
 select option{background:#1a1530}
-.btn{width:100%;padding:13px;border:none;border-radius:10px;cursor:pointer;font-size:1em;font-weight:600;background:linear-gradient(135deg,#ffd700,#ff6b6b);color:#1a0a0a;transition:all .3s;letter-spacing:1px}
+.btn{width:100%;padding:12px;border:none;border-radius:10px;cursor:pointer;font-size:1em;font-weight:600;background:linear-gradient(135deg,#ffd700,#ff6b6b);color:#1a0a0a;transition:all .3s;letter-spacing:1px}
 .btn:hover{transform:scale(1.02);box-shadow:0 8px 25px rgba(255,215,0,.3)}
 .result{display:none;animation:fadeUp .5s ease}
 .result.show{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.result-head{text-align:center;padding:18px;background:rgba(255,215,0,.05);border-radius:14px;margin-bottom:15px;border:1px solid rgba(255,215,0,.1)}
-.result-icon{font-size:3em;margin-bottom:6px}
-.result-title{font-size:1.4em;color:#ffd700}
-.result-sub{color:#807060;font-size:.83em;margin-top:3px}
-.luck-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-.luck-item{background:rgba(255,255,255,.03);padding:9px 12px;border-radius:9px;display:flex;justify-content:space-between;border:1px solid rgba(255,255,255,.05)}
-.luck-lbl{color:#807060;font-size:.83em}
-.luck-val{color:#ffd700;font-size:1em}
-.fortune-block{background:rgba(0,0,0,.2);padding:15px;border-radius:12px;line-height:1.9;color:#c8c0b0;margin-top:12px;border-left:3px solid #ffd700}
-.fortune-block h4{color:#ffd700;margin-bottom:6px;font-size:.96em}
-.lucky-box{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
-.lucky-item{text-align:center;background:rgba(255,215,0,.05);padding:10px;border-radius:10px;border:1px solid rgba(255,215,0,.1)}
-.lucky-item span{display:block}
-.lucky-item .lbl{font-size:.75em;color:#807060;margin-bottom:3px}
-.lucky-item .val{font-size:1.1em;color:#ffd700}
-.pay-section{background:linear-gradient(135deg,rgba(0,200,83,.08),rgba(0,150,199,.08));border:1px solid rgba(0,200,83,.2);border-radius:14px;padding:18px;margin-top:15px;text-align:center}
-.pay-title{color:#00c853;font-size:1em;margin-bottom:6px;font-weight:600}
-.pay-desc{color:#706050;font-size:.83em;margin-bottom:12px}
-.pay-qr{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.result-head{text-align:center;padding:16px;background:rgba(255,215,0,.05);border-radius:14px;margin-bottom:14px;border:1px solid rgba(255,215,0,.1)}
+.result-icon{font-size:2.8em;margin-bottom:5px}
+.result-title{font-size:1.3em;color:#ffd700}
+.result-sub{color:#807060;font-size:.8em;margin-top:3px}
+.luck-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.luck-item{background:rgba(255,255,255,.03);padding:8px 11px;border-radius:9px;display:flex;justify-content:space-between;border:1px solid rgba(255,255,255,.05)}
+.luck-lbl{color:#807060;font-size:.8em}
+.luck-val{color:#ffd700}
+.fortune-block{background:rgba(0,0,0,.2);padding:14px;border-radius:12px;line-height:1.85;color:#c8c0b0;margin-top:11px;border-left:3px solid #ffd700}
+.fortune-block h4{color:#ffd700;margin-bottom:5px;font-size:.93em}
+.lucky-box{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:11px 0}
+.lucky-item{text-align:center;background:rgba(255,215,0,.05);padding:9px;border-radius:10px;border:1px solid rgba(255,215,0,.1)}
+.lucky-item .lbl{font-size:.73em;color:#807060;margin-bottom:3px;display:block}
+.lucky-item .val{font-size:1em;color:#ffd700}
+.pay-section{background:linear-gradient(135deg,rgba(0,200,83,.08),rgba(0,150,199,.08));border:1px solid rgba(0,200,83,.2);border-radius:14px;padding:16px;margin-top:14px;text-align:center}
+.pay-title{color:#00c853;font-size:1em;margin-bottom:5px;font-weight:600}
+.pay-desc{color:#706050;font-size:.8em;margin-bottom:11px}
+.pay-qr{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .qr-box{background:#fff;padding:6px;border-radius:8px;display:inline-block}
-.qr-lbl{color:#807060;margin-top:5px;font-size:.78em}
-.t-spread{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:15px 0}
-.t-slot{width:74px;height:112px;border:2px dashed rgba(199,125,255,.3);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:1.9em;background:rgba(107,63,160,.1)}
+.qr-lbl{color:#807060;margin-top:4px;font-size:.76em}
+.t-spread{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:14px 0}
+.t-slot{width:70px;height:106px;border:2px dashed rgba(199,125,255,.3);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:1.8em;background:rgba(107,63,160,.1)}
 .t-slot:hover{border-color:#c77dff;transform:translateY(-4px)}
 .t-slot.selected{border-color:#ffd700;background:rgba(255,215,0,.1)}
-.t-slot small{font-size:.53em;color:#806080;margin-top:3px}
-.stick-center{text-align:center;padding:20px}
-.stick-btn{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#1a0a00;border:none;padding:16px 48px;border-radius:50px;font-size:1.2em;cursor:pointer;transition:all .3s;box-shadow:0 8px 25px rgba(255,140,0,.3)}
+.t-slot small{font-size:.51em;color:#806080;margin-top:3px}
+.stick-center{text-align:center;padding:18px}
+.stick-btn{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#1a0a00;border:none;padding:15px 45px;border-radius:50px;font-size:1.15em;cursor:pointer;transition:all .3s;box-shadow:0 8px 25px rgba(255,140,0,.3)}
 .stick-btn:hover{transform:scale(1.05);box-shadow:0 12px 35px rgba(255,140,0,.5)}
-.stick-gua{font-size:2.4em;margin:12px 0}
-.cam-wrap{width:240px;height:240px;margin:0 auto 15px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,215,0,.3);background:rgba(0,0,0,.3);position:relative}
-.cam-wrap video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
-.cam-wrap canvas{position:absolute;top:0;left:0;width:100%;height:100%;transform:scaleX(-1)}
-.cam-tip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#ffd700;font-size:.93em;text-align:center;line-height:1.6}
-.face-tips{background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.1);border-radius:10px;padding:12px;margin:12px 0;color:#a09080;font-size:.83em;line-height:1.8;text-align:left}
-.face-report{background:rgba(0,0,0,.3);border-radius:14px;padding:18px;margin-top:15px;border:1px solid rgba(255,215,0,.1)}
-.face-report h3{color:#ffd700;font-size:1.25em;margin-bottom:12px;text-align:center}
-.face-ring{width:100px;height:100px;border-radius:50%;border:4px solid #ffd700;display:flex;align-items:center;justify-content:center;margin:0 auto 13px;font-size:1.6em;color:#ffd700;background:rgba(255,215,0,.05)}
-.meter-row{margin-bottom:9px}
-.meter-lbl{display:flex;justify-content:space-between;color:#a09080;font-size:.83em;margin-bottom:4px}
-.meter-bar{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.stick-gua{font-size:2.2em;margin:10px 0}
+.cam-wrap{width:230px;height:230px;margin:0 auto 14px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,215,0,.3);background:rgba(0,0,0,.3);position:relative}
+.cam-wrap video,.cam-wrap canvas{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.cam-tip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#ffd700;font-size:.9em;text-align:center;line-height:1.6}
+.face-tips{background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.1);border-radius:10px;padding:11px;margin:11px 0;color:#a09080;font-size:.8em;line-height:1.8}
+.face-report{background:rgba(0,0,0,.3);border-radius:14px;padding:16px;margin-top:14px;border:1px solid rgba(255,215,0,.1)}
+.face-report h3{color:#ffd700;font-size:1.2em;margin-bottom:11px;text-align:center}
+.face-ring{width:95px;height:95px;border-radius:50%;border:4px solid #ffd700;display:flex;align-items:center;justify-content:center;margin:0 auto 11px;font-size:1.5em;color:#ffd700;background:rgba(255,215,0,.05)}
+.meter-row{margin-bottom:8px}
+.meter-lbl{display:flex;justify-content:space-between;color:#a09080;font-size:.8em;margin-bottom:3px}
+.meter-bar{height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
 .meter-fill{height:100%;border-radius:3px;transition:width 1s ease}
 .meter-fill.g{background:linear-gradient(90deg,#ffd700,#ff8c00)}
 .meter-fill.p{background:linear-gradient(90deg,#9b59b6,#8e44ad)}
 .meter-fill.b{background:linear-gradient(90deg,#3498db,#2980b9)}
-.face-sec-title{color:#ffd700;font-size:.96em;margin:12px 0 5px;display:flex;align-items:center;gap:5px}
-.advice{background:rgba(0,200,83,.05);border-radius:9px;padding:12px;margin-top:8px;border-left:3px solid #00c853}
-.advice h5{color:#00c853;margin-bottom:5px;font-size:.91em}
-.advice p{color:#908070;font-size:.83em;line-height:1.7}
-.ad{background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:10px;padding:15px;text-align:center;color:#504030;font-size:.83em;margin:15px 0}
-footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
-.divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,#ffd700,transparent);margin:12px auto}
+.face-sec-title{color:#ffd700;font-size:.93em;margin:11px 0 4px;display:flex;align-items:center;gap:4px}
+.advice{background:rgba(0,200,83,.05);border-radius:9px;padding:11px;margin-top:7px;border-left:3px solid #00c853}
+.advice h5{color:#00c853;margin-bottom:4px;font-size:.88em}
+.advice p{color:#908070;font-size:.8em;line-height:1.7}
+.ad{background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:10px;padding:14px;text-align:center;color:#504030;font-size:.8em;margin:14px 0}
+footer{text-align:center;padding:25px 18px;color:#403020;font-size:.76em}
+.divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,#ffd700,transparent);margin:10px auto}
 .hidden{display:none!important}
-.loader{border:3px solid rgba(255,215,0,.1);border-top:3px solid #ffd700;border-radius:50%;width:32px;height:32px;animation:spin .8s linear infinite;margin:15px auto}
+.loader{border:3px solid rgba(255,215,0,.1);border-top:3px solid #ffd700;border-radius:50%;width:30px;height:30px;animation:spin .8s linear infinite;margin:14px auto}
 @keyframes spin{to{transform:rotate(360deg)}}
-.star-chart{background:rgba(0,0,0,.3);border-radius:12px;padding:15px;margin:12px 0}
-.star-chart h4{color:#c77dff;margin-bottom:8px}
-.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.chart-item{background:rgba(255,255,255,.03);padding:8px 10px;border-radius:8px;display:flex;justify-content:space-between;font-size:.85em}
+.star-chart{background:rgba(0,0,0,.3);border-radius:12px;padding:14px;margin:11px 0}
+.star-chart h4{color:#c77dff;margin-bottom:7px}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.chart-item{background:rgba(255,255,255,.03);padding:7px 9px;border-radius:8px;display:flex;justify-content:space-between;font-size:.83em}
 .chart-item .nm{color:#a09080}
 .chart-item .sg{color:#c77dff}
-@media(max-width:600px){h1{font-size:1.8em}.form-row{grid-template-columns:1fr}.luck-grid{grid-template-columns:1fr}.nav-links{display:none}.cam-wrap{width:190px;height:190px}.lucky-box{grid-template-columns:repeat(2,1fr)}}
+
+/* 起名功能样式 */
+.name-result{display:none;animation:fadeUp .5s ease;margin-top:15px}
+.name-result.show{display:block}
+.name-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.name-card{background:rgba(0,0,0,.3);border:1px solid rgba(255,215,0,.15);border-radius:12px;padding:14px;text-align:center;transition:all .3s}
+.name-card:hover{border-color:#ffd700;transform:translateY(-2px);box-shadow:0 5px 20px rgba(255,215,0,.1)}
+.name-card .name{font-size:1.8em;color:#ffd700;font-weight:bold;margin-bottom:5px}
+.name-card .pinyin{color:#a09080;font-size:.8em;margin-bottom:5px}
+.name-card .score{display:inline-block;background:linear-gradient(135deg,#ffd700,#ff6b6b);color:#1a0a0a;padding:3px 12px;border-radius:20px;font-size:.76em;font-weight:bold}
+.name-card .meaning{color:#908070;font-size:.78em;margin-top:6px;line-height:1.6}
+.name-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.name-tab{padding:8px 18px;border:1px solid rgba(255,215,0,.2);border-radius:20px;cursor:pointer;font-size:.86em;color:#a09080;transition:all .3s;background:rgba(255,255,255,.03)}
+.name-tab.active,.name-tab:hover{background:rgba(255,215,0,.1);border-color:#ffd700;color:#ffd700}
+.bazi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin:10px 0}
+.bazi-item{background:rgba(0,0,0,.2);padding:8px;border-radius:8px;text-align:center}
+.bazi-item .label{font-size:.7em;color:#807060;margin-bottom:3px}
+.bazi-item .val{color:#ffd700;font-size:1em;font-weight:bold}
+.wuxing-row{display:flex;justify-content:center;gap:10px;margin:10px 0;flex-wrap:wrap}
+.wuxing-item{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2em;border:2px solid rgba(255,255,255,.1)}
+.wuxing-item.active{border-color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.3)}
+.wuxing-item.gold{background:rgba(255,215,0,.1)}
+.wuxing-item.wood{background:rgba(0,180,0,.1)}
+.wuxing-item.water{background:rgba(100,150,255,.1)}
+.wuxing-item.fire{background:rgba(255,80,0,.1)}
+.wuxing-item.earth{background:rgba(180,120,0,.1)}
+@media(max-width:600px){h1{font-size:1.7em}.form-row{grid-template-columns:1fr}.nav-links{display:none}.cam-wrap{width:180px;height:180px}.lucky-box{grid-template-columns:repeat(2,1fr)}.name-list{grid-template-columns:1fr}.bazi-row{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="cosmos"></div>
-<div class="stars" id="stars"></div>
-<nav>
+
+<!-- 滚动成交通知 -->
+<div class="order-bar" id="orderBar">
+<div class="order-inner" id="orderInner"></div>
+</div>
+
+<nav style="margin-top:36px">
 <div class="nav-inner">
 <div class="nav-logo">🔮 玄学殿堂</div>
 <div class="nav-links">
 <a href="#" class="active" onclick="gt('home')">首页</a>
-<a href="#" onclick="gt('zodiac')">星座运势</a>
-<a href="#" onclick="gt('starchart')">星盘解读</a>
-<a href="#" onclick="gt('zodiacCN')">生肖运势</a>
-<a href="#" onclick="gt('chinese')">生肖配对</a>
-<a href="#" onclick="gt('face')">AI面相</a>
+<a href="#" onclick="gt('zodiac')">星座</a>
+<a href="#" onclick="gt('starchart')">星盘</a>
+<a href="#" onclick="gt('zodiacCN')">生肖</a>
+<a href="#" onclick="gt('chinese')">配对</a>
+<a href="#" onclick="gt('naming')">起名</a>
+<a href="#" onclick="gt('face')">面相</a>
 <a href="#" onclick="gt('tarot')">塔罗</a>
 <a href="#" onclick="gt('stick')">抽签</a>
 <a href="#" onclick="gt('fengshui')">风水</a>
 </div>
 </div>
 </nav>
+
 <div class="container">
 <div id="home">
 <header>
 <div class="emblem">✨🌙✨</div>
 <h1>玄 学 殿 堂</h1>
-<p class="sub">AI面相 · 星座运势 · 星盘解读 · 生肖流年 · 塔罗占卜 · 风水布局</p>
-<div class="badges">
-<span class="badge">🤖 AI智能分析</span>
-<span class="badge">🔐 隐私保护</span>
-<span class="badge">💰 付费解锁深度报告</span>
-</div>
+<p class="sub">AI面相 · 星座运势 · 星盘解读 · 生肖流年 · 塔罗占卜 · 风水布局 · 宝宝起名</p>
 </header>
 <div class="features">
-<div class="feat" onclick="gt('face')"><div class="feat-icon">🔍</div><div class="feat-title">AI面相分析</div><div class="feat-desc">拍照识面，洞悉命运</div></div>
+<div class="feat" onclick="gt('naming')"><div class="feat-icon">👶</div><div class="feat-title">宝宝起名</div><div class="feat-desc">八字五行，好名好运</div></div>
 <div class="feat" onclick="gt('zodiac')"><div class="feat-icon">♈</div><div class="feat-title">星座运势</div><div class="feat-desc">每日星象，趋吉避凶</div></div>
 <div class="feat" onclick="gt('starchart')"><div class="feat-icon">🌌</div><div class="feat-title">星盘解读</div><div class="feat-desc">个人星盘，深度剖析</div></div>
 <div class="feat" onclick="gt('zodiacCN')"><div class="feat-icon">🐉</div><div class="feat-title">生肖运势</div><div class="feat-desc">流年大运，贵人方位</div></div>
 <div class="feat" onclick="gt('chinese')"><div class="feat-icon">💕</div><div class="feat-title">生肖配对</div><div class="feat-desc">属相合婚，姻缘预测</div></div>
+<div class="feat" onclick="gt('face')"><div class="feat-icon">🔍</div><div class="feat-title">AI面相</div><div class="feat-desc">拍照识面，洞悉命运</div></div>
 <div class="feat" onclick="gt('tarot')"><div class="feat-icon">🃏</div><div class="feat-title">塔罗占卜</div><div class="feat-desc">心诚则灵，指点迷津</div></div>
 <div class="feat" onclick="gt('stick')"><div class="feat-icon">🎋</div><div class="feat-title">观音灵签</div><div class="feat-desc">求问前程，祈福解惑</div></div>
 <div class="feat" onclick="gt('fengshui')"><div class="feat-icon">🏠</div><div class="feat-title">风水布局</div><div class="feat-desc">家居调整，旺宅旺人</div></div>
 </div>
-
-<!-- 百度联盟广告位 -->
-<div style="margin:20px 0;padding:15px;background:rgba(255,255,255,.03);border-radius:10px;text-align:center">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-<div class="ad">📢 广告位招租 · 精准引流 · 联系作者获取报价</div>
+<div class="ad">📢 广告位招租 · 精准投放 · 联系作者获取报价</div>
 </div>
 
 <!-- 星座运势 -->
 <div id="zodiac" class="card hidden">
 <div class="sec-title">✨ 星座每日运势</div>
-<div class="form-group">
-<label>选择你的太阳星座</label>
+<div class="form-group"><label>选择你的太阳星座</label>
 <select id="zs"><option value="">请选择星座</option><option value="aries">♈ 白羊座 3.21-4.19</option><option value="taurus">♉ 金牛座 4.20-5.20</option><option value="gemini">♊ 双子座 5.21-6.21</option><option value="cancer">♋ 巨蟹座 6.22-7.22</option><option value="leo">♌ 狮子座 7.23-8.22</option><option value="virgo">♍ 处女座 8.23-9.22</option><option value="libra">♎ 天秤座 9.23-10.23</option><option value="scorpio">♏ 天蝎座 10.24-11.22</option><option value="sagittarius">♐ 射手座 11.23-12.21</option><option value="capricorn">♑ 摩羯座 12.22-1.19</option><option value="aquarius">♒ 水瓶座 1.20-2.18</option><option value="pisces">♓ 双鱼座 2.19-3.20</option></select>
 </div>
 <button class="btn" onclick="doZ()">查看今日运势 🔮</button>
 <div id="zR" class="result">
-<div class="result-head">
-<div class="result-icon" id="zI">♈</div>
-<div class="result-title" id="zN">白羊座</div>
-<div class="result-sub" id="zD"></div>
-</div>
+<div class="result-head"><div class="result-icon" id="zI">♈</div><div class="result-title" id="zN">白羊座</div><div class="result-sub" id="zD"></div></div>
 <div class="luck-grid">
 <div class="luck-item"><span class="luck-lbl">整体</span><span class="luck-val" id="zO">★★★★★</span></div>
 <div class="luck-item"><span class="luck-lbl">爱情</span><span class="luck-val" id="zL">★★★★☆</span></div>
@@ -181,13 +202,7 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 </div>
 <div class="lucky-box" id="zLucky"></div>
 <div class="fortune-block" id="zT"></div>
-<div class="pay-section">
-<div class="pay-title">💰 解锁完整版运势分析</div>
-<div class="pay-desc">扫码支付 9.9 元，获取详细运势解读</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 9.9元</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
-</div>
+<div class="pay-section"><div class="pay-title">💰 解锁完整版运势分析</div><div class="pay-desc">扫码支付 9.9 元，获取详细运势解读</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 9.9元</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
 </div>
@@ -205,11 +220,7 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 </div>
 <button class="btn" onclick="doSC()">生成星盘报告 🌌</button>
 <div id="scR" class="result">
-<div class="result-head">
-<div class="result-icon">🌌</div>
-<div class="result-title">个人星盘解读</div>
-<div class="result-sub" id="scSub"></div>
-</div>
+<div class="result-head"><div class="result-icon">🌌</div><div class="result-title">个人星盘解读</div><div class="result-sub" id="scSub"></div></div>
 <div class="star-chart" id="scChart"></div>
 <div class="fortune-block" id="scSun"></div>
 <div class="fortune-block" id="scMoon"></div>
@@ -217,13 +228,7 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div class="fortune-block" id="scMars"></div>
 <div class="fortune-block" id="scJuno"></div>
 <div class="fortune-block" id="scSummary"></div>
-<div class="pay-section">
-<div class="pay-title">💰 解锁完整版星盘报告</div>
-<div class="pay-desc">扫码支付 39.9 元，获取完整星盘详解</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 39.9元</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
-</div>
+<div class="pay-section"><div class="pay-title">💰 解锁完整版星盘报告</div><div class="pay-desc">扫码支付 39.9 元，获取完整星盘详解</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 39.9元</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
 </div>
@@ -231,17 +236,12 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <!-- 生肖运势 -->
 <div id="zodiacCN" class="card hidden">
 <div class="sec-title">🐉 生肖流年运势</div>
-<div class="form-group">
-<label>选择你的生肖</label>
-<select id="zc"><option value="">请选择生肖</option><option value="鼠">🐀 鼠 - 机智灵活，财运亨通</option><option value="牛">🐂 牛 - 勤恳稳重，事业有成</option><option value="虎">🐅 虎 - 威猛霸气，贵人相助</option><option value="兔">🐇 兔 - 温和聪慧，人缘极佳</option><option value="龙">🐉 龙 - 尊贵吉祥，前程似锦</option><option value="蛇">🐍 蛇 - 智慧深沉，偏财运旺</option><option value="马">🐎 马 - 奔放自由，机遇不断</option><option value="羊">🐐 羊 - 温柔善良，家庭和睦</option><option value="猴">🐒 猴 - 聪明伶俐，创意无限</option><option value="鸡">🐓 鸡 - 勤劳务实，财源广进</option><option value="狗">🐕 狗 - 忠诚可靠，贵人扶持</option><option value="猪">🐖 猪 - 福气满满，生活富足</option></select>
+<div class="form-group"><label>选择你的生肖</label>
+<select id="zc"><option value="">请选择生肖</option><option value="鼠">🐀 鼠</option><option value="牛">🐂 牛</option><option value="虎">🐅 虎</option><option value="兔">🐇 兔</option><option value="龙">🐉 龙</option><option value="蛇">🐍 蛇</option><option value="马">🐎 马</option><option value="羊">🐐 羊</option><option value="猴">🐒 猴</option><option value="鸡">🐓 鸡</option><option value="狗">🐕 狗</option><option value="猪">🐖 猪</option></select>
 </div>
 <button class="btn" onclick="doZC()">查看流年运势 🐉</button>
 <div id="zcR" class="result">
-<div class="result-head">
-<div class="result-icon" id="zcI">🐀</div>
-<div class="result-title" id="zcN">鼠</div>
-<div class="result-sub" id="zcD"></div>
-</div>
+<div class="result-head"><div class="result-icon" id="zcI">🐀</div><div class="result-title" id="zcN">鼠</div><div class="result-sub" id="zcD"></div></div>
 <div class="luck-grid">
 <div class="luck-item"><span class="luck-lbl">整体</span><span class="luck-val" id="zcO">★★★★★</span></div>
 <div class="luck-item"><span class="luck-lbl">爱情</span><span class="luck-val" id="zcL">★★★★☆</span></div>
@@ -252,13 +252,7 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div class="fortune-block" id="zcGui"></div>
 <div class="fortune-block" id="zcYear"></div>
 <div class="advice" id="zcAdv"></div>
-<div class="pay-section">
-<div class="pay-title">💰 解锁完整版生肖流年报告</div>
-<div class="pay-desc">扫码支付 19.9 元，获取详细流年运势</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 19.9元</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
-</div>
+<div class="pay-section"><div class="pay-title">💰 解锁完整版生肖流年报告</div><div class="pay-desc">扫码支付 19.9 元，获取详细流年运势</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 19.9元</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
 </div>
@@ -267,22 +261,88 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div id="chinese" class="card hidden">
 <div class="sec-title">🐉 生肖配对查询</div>
 <div class="form-row">
-<div class="form-group"><label>你的生肖</label><select id="cy"><option value="">请选择</option><option value="鼠">🐀 鼠</option><option value="牛">🐂 牛</option><option value="虎">🐅 虎</option><option value="兔">🐇 兔</option><option value="龙">🐉 龙</option><option value="蛇">🐍 蛇</option><option value="马">🐎 马</option><option value="羊">🐐 羊</option><option value="猴">🐒 猴</option><option value="鸡">🐓 鸡</option><option value="狗">🐕 狗</option><option value="猪">🐖 猪</option></select></div>
+<div class="form-group"><label>你的生肖</label><select id="cy"><option value="">请选择</option><option value="鼠">🐀 鼠</option><option value="牛">🐂 牛</option><option value="虎">🐅 虎</option><option value="兔">🐇 兔</option><option value="龙">🐉 龙</option><option value="蛇"><option value="马">🐎 马</option><option value="羊">🐐 羊</option><option value="猴">🐒 猴</option><option value="鸡">🐓 鸡</option><option value="狗">🐕 狗</option><option value="猪">🐖 猪</option></select></div>
 <div class="form-group"><label>TA的生肖</label><select id="ct"><option value="">请选择</option><option value="鼠">🐀 鼠</option><option value="牛">🐂 牛</option><option value="虎">🐅 虎</option><option value="兔">🐇 兔</option><option value="龙">🐉 龙</option><option value="蛇">🐍 蛇</option><option value="马">🐎 马</option><option value="羊">🐐 羊</option><option value="猴">🐒 猴</option><option value="鸡">🐓 鸡</option><option value="狗">🐕 狗</option><option value="猪">🐖 猪</option></select></div>
 </div>
 <button class="btn" onclick="doC()">查看配对结果 🐉</button>
 <div id="cR" class="result">
-<div style="text-align:center;margin:12px 0"><span id="cYi" style="font-size:2.8em">🐀</span><span style="font-size:1.6em;color:#ffd700;margin:0 12px">💕</span><span id="cTi" style="font-size:2.8em">🐉</span></div>
-<div style="text-align:center;font-size:1.9em;color:#ffd700;margin:8px 0" id="cS">92%</div>
+<div style="text-align:center;margin:11px 0"><span id="cYi" style="font-size:2.6em">🐀</span><span style="font-size:1.5em;color:#ffd700;margin:0 11px">💕</span><span id="cTi" style="font-size:2.6em">🐉</span></div>
+<div style="text-align:center;font-size:1.8em;color:#ffd700;margin:7px 0" id="cS">92%</div>
 <div class="fortune-block" id="cT"></div>
-<div class="pay-section">
-<div class="pay-title">💰 解锁完整版配对分析</div>
-<div class="pay-desc">扫码支付 19.9 元，获取详细配对报告</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 19.9元</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
+<div class="pay-section"><div class="pay-title">💰 解锁完整版配对分析</div><div class="pay-desc">扫码支付 19.9 元，获取详细配对报告</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 19.9元</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
+
+<!-- 宝宝起名 -->
+<div id="naming" class="card hidden">
+<div class="sec-title">👶 宝宝起名 / 🏢 公司起名</div>
+<div class="name-tabs" id="nameTabs">
+<div class="name-tab active" onclick="switchNameTab('baby')">👶 宝宝起名</div>
+<div class="name-tab" onclick="switchNameTab('company')">🏢 公司起名</div>
+<div class="name-tab" onclick="switchNameTab('rename')">✨ 改名服务</div>
+</div>
+
+<!-- 宝宝起名表单 -->
+<div id="babyForm">
+<div class="form-row">
+<div class="form-group"><label>姓氏</label><select id="bmXing"><option value="">选择姓氏</option><option value="王">王</option><option value="李">李</option><option value="张">张</option><option value="刘">刘</option><option value="陈">陈</option><option value="杨">杨</option><option value="赵">赵</option><option value="黄">黄</option><option value="周">周</option><option value="吴">吴</option><option value="徐">徐</option><option value="孙">孙</option><option value="胡">胡</option><option value="朱">朱</option><option value="高">高</option><option value="林">林</option><option value="何">何</option><option value="郭">郭</option><option value="马">马</option><option value="罗">罗</option><option value="梁">梁</option><option value="宋">宋</option><option value="郑">郑</option><option value="谢">谢</option><option value="韩">韩</option><option value="唐">唐</option><option value="冯">冯</option><option value="于">于</option><option value="董">董</option><option value="萧">萧</option><option value="程">程</option><option value="曹">曹</option><option value="袁">袁</option><option value="邓">邓</option><option value="许">许</option><option value="傅">傅</option><option value="沈">沈</option><option value="曾">曾</option><option value="彭">彭</option><option value="吕">吕</option></select></div>
+<div class="form-group"><label>性别</label><select id="bmGender"><option value="">选择性别</option><option value="男">👦 男宝宝</option><option value="女">👧 女宝宝</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>出生年份</label><select id="bmY"><option value="">年份</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select></div>
+<div class="form-group"><label>出生月份</label><select id="bmM"><option value="">月份</option><option value="1">1月</option><option value="2">2月</option><option value="3">3月</option><option value="4">4月</option><option value="5">5月</option><option value="6">6月</option><option value="7">7月</option><option value="8">8月</option><option value="9">9月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>出生日期</label><select id="bmD"><option value="">日期</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select></div>
+<div class="form-group"><label>出生时辰</label><select id="bmH"><option value="">时辰</option><option value="0">子时 23:00-01:00</option><option value="1">丑时 01:00-03:00</option><option value="2">寅时 03:00-05:00</option><option value="3">卯时 05:00-07:00</option><option value="4">辰时 07:00-09:00</option><option value="5">巳时 09:00-11:00</option><option value="6">午时 11:00-13:00</option><option value="7">未时 13:00-15:00</option><option value="8">申时 15:00-17:00</option><option value="9">酉时 17:00-19:00</option><option value="10">戌时 19:00-21:00</option><option value="11">亥时 21:00-23:00</option></select></div>
+</div>
+<div class="form-group"><label>喜用五行（可多选）</label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;padding:10px;background:rgba(0,0,0,.2);border-radius:10px">
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="金" class="wuxing-check"> ⚪ 金</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="木" class="wuxing-check"> 🟢 木</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="水" class="wuxing-check"> 🔵 水</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="火" class="wuxing-check"> 🔴 火</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="土" class="wuxing-check"> 🟤 土</label>
+</div>
+</div>
+<button class="btn" onclick="doBabyName()">🔮 生成吉祥好名</button>
+<div id="babyNameR" class="name-result"></div>
+</div>
+
+<!-- 公司起名表单 -->
+<div id="companyForm" style="display:none">
+<div class="form-group"><label>行业类型</label>
+<select id="coType"><option value="">选择行业</option><option value="科技">💻 科技/互联网</option><option value="餐饮">🍜 餐饮/美食</option><option value="教育">📚 教育/培训</option><option value="医疗">🏥 医疗/健康</option><option value="金融">💰 金融/投资</option><option value="贸易">📦 贸易/物流</option><option value="建筑">🏗 建筑/房地产</option><option value="服装">👔 服装/美容</option><option value="传媒">📱 传媒/广告</option><option value="娱乐">🎭 娱乐/旅游</option><option value="农业">🌾 农业/畜牧</option><option value="其他">📋 其他行业</option></select>
+</div>
+<div class="form-group"><label>期望字数</label>
+<select id="coLen"><option value="2">2个字</option><option value="3">3个字</option><option value="4">4个字</option></select>
+</div>
+<div class="form-group"><label>法人姓氏（选填，影响五行）</label><input type="text" id="coXing" placeholder="输入法人姓氏，如：王"></div>
+<div class="form-group"><label>期望风格（选填）</label>
+<select id="coStyle"><option value="">不限风格</option><option value="大气">🌟 大气磅礴型</option><option value="简约">✨ 简约时尚型</option><option value="古典">🏯 古典雅致型</option><option value="国际">🌍 国际洋气型</option></select>
+</div>
+<button class="btn" onclick="doCompanyName()">🏢 生成公司名称</button>
+<div id="companyNameR" class="name-result"></div>
+</div>
+
+<!-- 改名表单 -->
+<div id="renameForm" style="display:none">
+<div class="form-group"><label>现用姓名</label><input type="text" id="oldName" placeholder="请输入现用姓名"></div>
+<div class="form-row">
+<div class="form-group"><label>性别</label><select id="reGender"><option value="">选择性别</option><option value="男">👦 男</option><option value="女">👧 女</option></select></div>
+<div class="form-group"><label>出生年份</label><select id="reY"><option value="">年份</option><option value="1990">1990</option><option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option><option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select></div>
+</div>
+<div class="form-group"><label>喜用五行（可多选）</label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;padding:10px;background:rgba(0,0,0,.2);border-radius:10px">
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="金" class="re-wuxing-check"> ⚪ 金</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="木" class="re-wuxing-check"> 🟢 木</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="水" class="re-wuxing-check"> 🔵 水</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="火" class="re-wuxing-check"> 🔴 火</label>
+<label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" value="土" class="re-wuxing-check"> 🟤 土</label>
+</div>
+</div>
+<button class="btn" onclick="doRename()">✨ 分析并推荐改名</button>
+<div id="renameR" class="name-result"></div>
 </div>
 </div>
 
@@ -290,18 +350,14 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div id="face" class="card hidden">
 <div class="sec-title">🔍 AI智能面相分析</div>
 <div style="text-align:center">
-<div class="cam-wrap" id="cWrap">
-<video id="v" autoplay playsinline muted></video>
-<canvas id="cv"></canvas>
-<div class="cam-tip" id="cTip">📷<br>点击启动摄像头</div>
-</div>
+<div class="cam-wrap" id="cWrap"><video id="v" autoplay playsinline muted></video><canvas id="cv"></canvas><div class="cam-tip" id="cTip">📷<br>点击启动摄像头</div></div>
 <div class="face-tips">💡 拍照技巧：正对镜头，光线均匀，露出完整面部<br>建议素颜或淡妆，摘下眼镜效果更准确</div>
 <button class="btn" id="snapBtn" onclick="snapF()" disabled>📸 拍照分析面相</button>
 <div class="loader hidden" id="fLd"></div>
 <div id="fR" class="result">
 <div class="face-report">
 <h3>📋 AI面相分析报告</h3>
-<div style="text-align:center"><div class="face-ring" id="fSc">78分</div><p style="color:#a09080;font-size:.83em">综合面相评分</p></div>
+<div style="text-align:center"><div class="face-ring" id="fSc">78分</div><p style="color:#a09080;font-size:.8em">综合面相评分</p></div>
 <div class="face-sec-title">📊 五官评分</div>
 <div id="fMeters"></div>
 <div class="face-sec-title">👁 详细分析</div>
@@ -310,14 +366,7 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div class="fortune-block" id="fFat"></div>
 <div class="face-sec-title">🔮 人生建议</div>
 <div class="advice"><h5>✅ 个性化改善方案</h5><p id="fAdv"></p></div>
-<div class="pay-section">
-<div class="pay-title">💰 解锁完整版面相报告</div>
-<div class="pay-desc">扫码支付 29.9 元，获取完整五官详解</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 29.9元</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
-</div>
-</div>
+<div class="pay-section"><div class="pay-title">💰 解锁完整版面相报告</div><div class="pay-desc">扫码支付 29.9 元，获取完整五官详解</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 29.9元</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
 </div>
@@ -326,20 +375,14 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <!-- 塔罗 -->
 <div id="tarot" class="card hidden">
 <div class="sec-title">🃏 塔罗占卜</div>
-<p style="color:#706050;margin-bottom:12px;text-align:center">从下方选择3张牌，解读过去、现在与未来的指引</p>
+<p style="color:#706050;margin-bottom:11px;text-align:center">从下方选择3张牌，解读过去、现在与未来的指引</p>
 <div class="t-spread" id="tSp"></div>
 <div class="form-group"><label>心中默想问题（可选）</label><input type="text" id="tQ" placeholder="默念您想问的事情..."></div>
 <button class="btn" onclick="doT()">🔮 开始占卜</button>
 <div id="tR" class="result">
 <div class="result-head"><div class="result-icon">🃏</div><div class="result-title">塔罗牌解读</div></div>
 <div class="fortune-block" id="tT"></div>
-<div class="pay-section">
-<div class="pay-title">💰 一对一详细牌阵解读</div>
-<div class="pay-desc">扫码支付 29.9 元，获取完整三张牌深度解读</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信支付</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
-</div>
+<div class="pay-section"><div class="pay-title">💰 一对一详细牌阵解读</div><div class="pay-desc">扫码支付 29.9 元，获取完整三张牌深度解读</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信支付</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
 </div>
@@ -353,13 +396,7 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div id="sR" class="result">
 <div class="result-head"><div class="stick-gua" id="sG">🌟</div><div class="result-title" id="sTi">上上签</div><div class="result-sub" id="sN"></div></div>
 <div class="fortune-block" id="sT2"></div>
-<div class="pay-section">
-<div class="pay-title">💰 解锁完整签文解析</div>
-<div class="pay-desc">扫码支付 6.6 元，获取专家详细解读</div>
-<div class="pay-qr">
-<div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 6.6元</div></div>
-<div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div>
-</div>
+<div class="pay-section"><div class="pay-title">💰 解锁完整签文解析</div><div class="pay-desc">扫码支付 6.6 元，获取专家详细解读</div><div class="pay-qr"><div><div class="qr-box"><img src="wechat.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">微信 6.6元</div></div><div><div class="qr-box"><img src="alipay.jpg" style="width:120px;height:120px"></div><div class="qr-lbl">支付宝</div></div></div></div>
 </div>
 </div>
 </div>
@@ -379,87 +416,111 @@ footer{text-align:center;padding:28px 18px;color:#403020;font-size:.78em}
 <div class="face-sec-title">🔴 风水禁忌</div>
 <div class="fortune-block" id="fTab"></div>
 <div class="advice"><h5>✅ 开运布局建议</h5><p id="fAdv2"></p></div>
-
-<!-- 百度联盟广告位 -->
-<div style="margin:20px 0;padding:15px;background:rgba(255,255,255,.03);border-radius:10px;text-align:center">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-<div class="ad">📢 广告位招租 · 精准投放 · 联系作者</div>
 </div>
 </div>
 
-
-<!-- 百度联盟广告位 -->
-<div style="margin:20px 0;padding:15px;background:rgba(255,255,255,.03);border-radius:10px;text-align:center">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <div class="ad">📢 广告位招租 · 精准投放 · 联系作者获取报价</div>
 </div>
 <footer>
-<p>© 2026 玄学殿堂 | AI面相 · 星座运势 · 星盘解读 · 生肖流年 · 塔罗占卜 · 风水布局</p>
+<p>© 2026 玄学殿堂 | AI面相 · 星座运势 · 星盘解读 · 生肖流年 · 塔罗占卜 · 风水布局 · 宝宝起名</p>
 <div class="divider"></div>
 <p>仅供娱乐参考 | 命运掌握在自己手中 | 理性对待</p>
 </footer>
 </div>
-<script>// Stars animation
-(function(){var s=document.getElementById("stars");for(var i=0;i<100;i++){var el=document.createElement("div");el.className="star";el.style.left=Math.random()*100+"%";el.style.top=Math.random()*100+"%";el.style.setProperty("--d",(Math.random()*3+2)+"s");el.style.animationDelay=Math.random()*3+"s";var sz=Math.random()*2+1;el.style.width=sz+"px";el.style.height=sz+"px";s.appendChild(el);}})();
+</body>
+</html>
+<script>// ============ 滚动成交数据 ============
+(function(){
+var orders=[
+"北京用户·刚购买了「星座运势完整版」9.9元","深圳用户·刚购买了「AI面相分析」29.9元","上海用户·刚购买了「塔罗占卜解读」29.9元","广州用户·刚购买了「生肖流年报告」19.9元","杭州用户·刚购买了「星盘完整解读」39.9元","成都用户·刚购买了「观音灵签详解」6.6元","武汉用户·刚购买了「风水布局分析」19.9元","西安用户·刚购买了「生肖配对报告」19.9元","南京用户·刚购买了「宝宝起名套餐」39.9元","重庆用户·刚购买了「公司起名服务」99元","苏州用户·刚购买了「改名测算服务」29.9元","天津用户·刚购买了「星座运势完整版」9.9元","长沙用户·刚购买了「AI面相分析」29.9元","郑州用户·刚购买了「塔罗三张牌解读」29.9元","青岛用户·刚购买了「生肖流年报告」19.9元","济南用户·刚购买了「星盘完整解读」39.9元","福州用户·刚购买了「观音灵签详解」6.6元","厦门用户·刚购买了「风水布局分析」19.9元","合肥用户·刚购买了「星座+生肖组合」25元","沈阳用户·刚购买了「AI面相分析」29.9元","哈尔滨用户·刚购买了「塔罗占卜解读」29.9元","石家庄用户·刚购买了「宝宝起名套餐」39.9元","南昌用户·刚购买了「公司起名服务」99元","昆明用户·刚购买了「改名测算服务」29.9元","兰州用户·刚购买了「星座运势完整版」9.9元","太原用户·刚购买了「AI面相分析」29.9元","长春用户·刚购买了「生肖配对报告」19.9元","贵阳用户·刚购买了「星盘完整解读」39.9元","南宁用户·刚购买了「风水布局分析」19.9元","乌鲁木齐用户·刚购买了「观音灵签详解」6.6元","拉萨用户·刚购买了「宝宝起名套餐」39.9元","呼和浩特用户·刚购买了「公司起名服务」99元","银川用户·刚购买了「改名测算服务」29.9元","西宁用户·刚购买了「星座运势完整版」9.9元","海口用户·刚购买了「AI面相分析」29.9元","三亚用户·刚购买了「塔罗三张牌解读」29.9元"
+];
+var doubled=orders.concat(orders);
+var inner=document.getElementById("orderInner");
+if(inner){inner.innerHTML=doubled.map(function(o){var parts=o.split("·");var city=parts[0];var rest=parts.slice(1).join("·");return'<div class="order-item">🎉 <strong>'+city+'</strong> <span>'+rest+'</span> <span class="time">刚刚</span></div>'}).join("");}
 
-function gt(id){var secs=["home","zodiac","starchart","zodiacCN","chinese","face","tarot","stick","fengshui"];for(var i=0;i<secs.length;i++){var el=document.getElementById(secs[i]);if(el)el.classList.add("hidden");}var t=document.getElementById(id);if(t)t.classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});if(id==="face")initCam();if(id==="tarot")initTarot();}
+setInterval(function(){
+var items=document.querySelectorAll(".order-item");
+if(items.length>0){
+var first=items[0];
+var clone=first.cloneNode(true);
+first.style.opacity="0";
+first.style.transition="opacity 0.3s";
+setTimeout(function(){first.remove();inner.appendChild(clone);clone.style.opacity="0";clone.style.transition="opacity 0.3s";setTimeout(function(){clone.style.opacity="1";},50);},300);
+}
+},3500);
+})();
 
-// 星座运势数据
+// Stars animation
+(function(){var s=document.getElementById("stars");if(s){for(var i=0;i<80;i++){var el=document.createElement("div");el.className="star";el.style.left=Math.random()*100+"%";el.style.top=Math.random()*100+"%";el.style.setProperty("--d",(Math.random()*3+2)+"s");el.style.animationDelay=Math.random()*3+"s";var sz=Math.random()*2+1;el.style.width=sz+"px";el.style.height=sz+"px";s.appendChild(el);}}})();
+
+// Navigation
+function gt(id){var secs=["home","zodiac","starchart","zodiacCN","chinese","naming","face","tarot","stick","fengshui"];for(var i=0;i<secs.length;i++){var el=document.getElementById(secs[i]);if(el)el.classList.add("hidden");}var t=document.getElementById(id);if(t)t.classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});if(id==="face")initCam();if(id==="tarot")initTarot();}
+
+// ============ 星座运势 ============
 var zD={aries:{n:"白羊座",i:"♈",d:"3.21-4.19",e:"火",num:[1,9,18],color:"红色、橙色",flower:"雏菊、满天星",stone:"红宝石、钻石"},taurus:{n:"金牛座",i:"♉",d:"4.20-5.20",e:"土",num:[2,6,15],color:"绿色、粉色",flower:"玫瑰、牡丹",stone:"祖母绿、翡翠"},gemini:{n:"双子座",i:"♊",d:"5.21-6.21",e:"风",num:[3,5,14],color:"黄色、浅蓝",flower:"百合、风信子",stone:"玛瑙、黄水晶"},cancer:{n:"巨蟹座",i:"♋",d:"6.22-7.22",e:"水",num:[2,7,16],color:"银色、白色",flower:"睡莲、百合",stone:"月光石、珍珠"},leo:{n:"狮子座",i:"♌",d:"7.23-8.22",e:"火",num:[1,5,19],color:"金色、橙色",flower:"向日葵、郁金香",stone:"红宝石、琥珀"},virgo:{n:"处女座",i:"♍",d:"8.23-9.22",e:"土",num:[3,6,27],color:"藏青、灰色",flower:"薰衣草、紫罗兰",stone:"蓝宝石、碧玺"},libra:{n:"天秤座",i:"♎",d:"9.23-10.23",e:"风",num:[4,6,15],color:"粉色、淡蓝",flower:"玫瑰、百合",stone:"蛋白石、橄榄石"},scorpio:{n:"天蝎座",i:"♏",d:"10.24-11.22",e:"水",num:[3,8,17],color:"深红、黑色",flower:"彼岸花、菊花",stone:"黄玉、黑曜石"},sagittarius:{n:"射手座",i:"♐",d:"11.23-12.21",e:"火",num:[3,9,12],color:"紫色、蓝色",flower:"蝴蝶兰、康乃馨",stone:"绿松石、紫水晶"},capricorn:{n:"摩羯座",i:"♑",d:"12.22-1.19",e:"土",num:[4,8,22],color:"黑色、棕色",flower:"康乃馨、梅花",stone:"石榴石、缟玛瑙"},aquarius:{n:"水瓶座",i:"♒",d:"1.20-2.18",e:"风",num:[4,7,11],color:"天蓝、银色",flower:"兰花、水仙",stone:"紫水晶、海蓝宝"},pisces:{n:"双鱼座",i:"♓",d:"2.19-3.20",e:"水",num:[3,7,12],color:"海蓝、淡紫",flower:"睡莲、水仙",stone:"海蓝宝、月光石"}};
 
-var zF={aries:{ov:"今日白羊座运势极佳！火星带来强大的行动力和勇气，适合主动出击。工作上有意外惊喜，财运亨通，桃花运旺盛。今日宜穿红色系服饰增强气场。",lv:"单身者今日桃花运旺，有望遇到心动的对象；已有伴侣者感情升温，适合安排浪漫约会。",cv:"事业上贵人运强，工作表现会受到上级认可，可能有晋升或加薪机会。",mv:"财务状况良好，适合进行理性投资，可能有意外之财降临！"},taurus:{ov:"金牛座今日运势稳定！金星守护，让你财运和感情运都不错。适合处理财务相关事务。今日宜穿绿色系服饰有助于事业运。",lv:"感情运极佳，单身者有望遇到理想对象，已有伴侣者感情甜蜜。",cv:"工作稳定推进，适合处理需要耐心的事务。今日适合学习新技能。",mv:"财运亨通，可能有额外收入！适合处理投资理财事宜。"},gemini:{ov:"双子座今日思维活跃！水星带来智慧和沟通能力，适合谈判、学习新知识。社交运势旺盛。",lv:"社交运旺盛，幽默感会吸引很多人。单身者可在社交场合遇到有缘人。",cv:"创意十足，适合从事需要沟通和创意的工作。今日适合提出新想法。",mv:"理性消费，避免冲动购物。适合规划财务。"},cancer:{ov:"巨蟹座今日情感丰富！月亮守护，适合内省和与家人朋友相处。家庭运势良好。",lv:"感情运极佳，适合与亲密的人共度时光。已有伴侣者感情温馨。",cv:"工作稳定，适合处理需要细心和耐心的事务。今日不宜急躁。",mv:"财运平稳，注意理财规划。"},leo:{ov:"狮子座今日自带光环！太阳照亮你的世界，今天是展现自我的好日子！",lv:"自信的你格外有魅力，感情运势上升。单身者有望遇到欣赏自己的人。",cv:"事业上有亮眼表现，可能获得认可和赞赏。适合主动展示才华。",mv:"财运势不可挡，但也要懂得分享。"},virgo:{ov:"处女座今日展现专业能力！细致和分析能力会得到充分发挥。",lv:"适合与伴侣一起规划未来，感情稳定。",cv:"工作上的努力会被上司看到，有晋升机会。",mv:"正财运稳定，适合存钱规划。"},libra:{ov:"天秤座今日注重和谐与平衡，社交和建立人脉的好时机。",lv:"社交运佳，容易遇到理想对象，感情升温。",cv:"适合协调类工作，谈判运强。",mv:"财运平衡，消费理性。"},scorpio:{ov:"天蝎座今日洞察力敏锐！适合研究分析和深度探索。",lv:"感情深刻而强烈，容易陷入热恋。",cv:"适合需要深度分析的工作。今日适合做重要决策。",mv:"偏财运佳，可能有意外惊喜！"},sagittarius:{ov:"射手座今日木星赐福！外出旅行、哲学思考都会带来收获。",lv:"单身者有望在旅途中遇到缘分。",cv:"适合拓展业务，远程工作。",mv:"财运上升，投资运佳！"},capricorn:{ov:"摩羯座今日稳重务实！土星带来耐心，积累沉淀的好时机。",lv:"感情稳定，适合长期发展。",cv:"工作上有望突破瓶颈，获得认可。",mv:"正财运稳定，理财有道。"},aquarius:{ov:"水瓶座今日创新能力爆棚！独特思维会带来意想不到的收获。",lv:"有趣的灵魂吸引人，适合交新朋友。",cv:"适合创新类工作，创意受到赏识。",mv:"理财有新想法，可能发现新机会！"},pisces:{ov:"双鱼座今日灵感迸发！艺术创作或心灵成长都会很顺利。",lv:"感情丰富而浪漫，容易动心。",cv:"艺术相关工作运气极佳。",mv:"财运平稳，注意防范诈骗。"}};
+var zF={aries:{ov:"今日白羊座运势极佳！火星带来强大的行动力和勇气，适合主动出击。",lv:"单身者桃花运旺，有望遇到心动的对象；已有伴侣者感情升温。",cv:"事业上贵人运强，可能有晋升或加薪机会。",mv:"财务状况良好，适合理性投资，可能有意外之财降临！"},taurus:{ov:"金牛座今日运势稳定！金星守护，财运和感情运都不错。",lv:"感情运极佳，单身者有望遇到理想对象。",cv:"工作稳定推进，适合处理需要耐心的事务。",mv:"财运亨通，可能有额外收入！"},gemini:{ov:"双子座今日思维活跃！水星带来智慧和沟通能力。",lv:"社交运旺盛，幽默感会吸引很多人。",cv:"创意十足，适合需要沟通和创意的工作。",mv:"理性消费，避免冲动购物。"},cancer:{ov:"巨蟹座今日情感丰富！月亮守护，适合与家人相处。",lv:"感情运极佳，适合与亲密的人共度时光。",cv:"工作稳定，适合处理需要细心的事务。",mv:"财运平稳，注意理财规划。"},leo:{ov:"狮子座今日自带光环！今天是展现自我的好日子！",lv:"自信的你格外有魅力，感情运势上升。",cv:"事业上有亮眼表现，可能获得认可和赞赏。",mv:"财运势不可挡，但也要懂得分享。"},virgo:{ov:"处女座今日展现专业能力！细致和分析能力会得到发挥。",lv:"适合与伴侣一起规划未来，感情稳定。",cv:"工作上的努力会被上司看到，有晋升机会。",mv:"正财运稳定，适合存钱规划。"},libra:{ov:"天秤座今日注重和谐与平衡，社交和建立人脉的好时机。",lv:"社交运佳，容易遇到理想对象。",cv:"适合协调类工作，谈判运强。",mv:"财运平衡，消费理性。"},scorpio:{ov:"天蝎座今日洞察力敏锐！适合研究分析和深度探索。",lv:"感情深刻而强烈，容易陷入热恋。",cv:"适合需要深度分析的工作。",mv:"偏财运佳，可能有意外惊喜！"},sagittarius:{ov:"射手座今日木星赐福！外出旅行、哲学思考都会带来收获。",lv:"单身者有望在旅途中遇到缘分。",cv:"适合拓展业务，远程工作。",mv:"财运上升，投资运佳！"},capricorn:{ov:"摩羯座今日稳重务实！积累沉淀的好时机。",lv:"感情稳定，适合长期发展。",cv:"工作上有望突破瓶颈，获得认可。",mv:"正财运稳定，理财有道。"},aquarius:{ov:"水瓶座今日创新能力爆棚！独特思维会带来意想不到的收获。",lv:"有趣的灵魂吸引人，适合交新朋友。",cv:"适合创新类工作，创意受到赏识。",mv:"理财有新想法，可能发现新机会！"},pisces:{ov:"双鱼座今日灵感迸发！艺术创作或心灵成长都会很顺利。",lv:"感情丰富而浪漫，容易动心。",cv:"艺术相关工作运气极佳。",mv:"财运平稳，注意防范诈骗。"}};
 
 function gS(s){var v=(s%35)+65;return "★".repeat(Math.ceil(v/20))+"☆".repeat(5-Math.ceil(v/20));}
 
 function doZ(){var s=document.getElementById("zs").value;if(!s){alert("请选择星座");return}var d=zD[s];var f=zF[s];var seed=new Date().getDate()*s.charCodeAt(0);document.getElementById("zI").textContent=d.i;document.getElementById("zN").textContent=d.n;document.getElementById("zD").textContent=d.d+" · "+d.e+"象星座";document.getElementById("zO").textContent=gS(seed);document.getElementById("zL").textContent=gS(seed+1);document.getElementById("zC").textContent=gS(seed+2);document.getElementById("zM").textContent=gS(seed+3);document.getElementById("zLucky").innerHTML='<div class="lucky-item"><span class="lbl">幸运数字</span><span class="val">'+d.num.join("、")+'</span></div><div class="lucky-item"><span class="lbl">幸运色</span><span class="val">'+d.color+'</span></div><div class="lucky-item"><span class="lbl">幸运花</span><span class="val">'+d.flower+'</span></div><div class="lucky-item"><span class="lbl">幸运石</span><span class="val">'+d.stone+'</span></div>';document.getElementById("zT").innerHTML="<h4>📊 今日运势详解</h4>"+f.ov+"<br><br><h4>💕 爱情运势</h4>"+f.lv+"<br><br><h4>💼 事业运势</h4>"+f.cv+"<br><br><h4>💰 财运运势</h4>"+f.mv;document.getElementById("zR").classList.add("show")}
 
-// 星盘解读
+// ============ 星盘解读 ============
 function getSunSign(m,d){if((m==3&&d>=21)||(m==4&&d<=19))return"aries";if((m==4&&d>=20)||(m==5&&d<=20))return"taurus";if((m==5&&d>=21)||(m==6&&d<=21))return"gemini";if((m==6&&d>=22)||(m==7&&d<=22))return"cancer";if((m==7&&d>=23)||(m==8&&d<=22))return"leo";if((m==8&&d>=23)||(m==9&&d<=22))return"virgo";if((m==9&&d>=23)||(m==10&&d<=23))return"libra";if((m==10&&d>=24)||(m==11&&d<=22))return"scorpio";if((m==11&&d>=23)||(m==12&&d<=21))return"sagittarius";if((m==12&&d>=22)||(m==1&&d<=19))return"capricorn";if((m==1&&d>=20)||(m==2&&d<=18))return"aquarius";return"pisces";}
+var signs=["白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"];
+var signMeanings={白羊座:{trait:"热情冲动、勇往直前、领导力强",love:"喜欢主动追求，热情奔放",work:"适合领导岗位，创业能力强",advice:"学会倾听他人意见"},金牛座:{trait:"稳重踏实、追求物质享受、忠诚可靠",love:"感情专一稳定",work:"适合金融、艺术领域",advice:"学会适应变化"},双子座:{trait:"聪明机智、善于沟通、好奇心强",love:"喜欢新鲜感",work:"适合传媒、销售领域",advice:"学会深入思考"},巨蟹座:{trait:"感情丰富、顾家、直觉敏锐",love:"感情细腻，重视家庭",work:"适合服务、餐饮领域",advice:"学会独立"},狮子座:{trait:"自信大方、领导力强、慷慨热情",love:"喜欢被关注和赞美",work:"适合管理、表演领域",advice:"学会谦虚"},处女座:{trait:"细心谨慎、追求完美",love:"感情谨慎，注重细节",work:"适合分析、质检领域",advice:"学会接受不完美"},天秤座:{trait:"优雅和谐、善于社交",love:"重视感情平衡",work:"适合公关、设计领域",advice:"学会独立做决定"},天蝎座:{trait:"神秘深沉、洞察力强",love:"感情深刻，忠诚专一",work:"适合研究领域",advice:"学会信任他人"},射手座:{trait:"乐观自由、热爱冒险",love:"需要自由和空间",work:"适合旅游、教育领域",advice:"学会承诺"},摩羯座:{trait:"务实稳重、有责任感",love:"感情认真负责",work:"适合管理、政界",advice:"学会享受生活"},水瓶座:{trait:"独立创新、思想前卫",love:"需要自由和独立",work:"适合科技领域",advice:"学会与世俗和解"},双鱼座:{trait:"浪漫多情、富有同情心",love:"感情浪漫，容易投入",work:"适合艺术、慈善领域",advice:"学会面对现实"}};
+var junoMeanings={白羊座:"婚姻中需要独立空间，适合找一个支持事业的伴侣。",金牛座:"婚姻中需要稳定和物质保障，适合找一个经济稳定的伴侣。",双子座:"婚姻中需要沟通和智力交流，适合找一个聊得来的伴侣。",巨蟹座:"婚姻中需要情感安全，适合找一个顾家的伴侣。",狮子座:"婚姻中需要被重视，适合找一个欣赏你的伴侣。",处女座:"婚姻中需要秩序和确定，适合找一个靠谱的伴侣。",天秤座:"婚姻中需要平衡和和谐，适合找一个优雅的伴侣。",天蝎座:"婚姻中需要深度连接和忠诚，适合找一个深情的伴侣。",射手座:"婚姻中需要自由和冒险，适合一个热爱自由的伴侣。",摩羯座:"婚姻中需要稳定和责任，适合一个成熟稳重的伴侣。",水瓶座:"婚姻中需要独立和友谊，适合一个思想前卫的伴侣。",双鱼座:"婚姻中需要浪漫和灵性，适合一个浪漫有爱心的伴侣。"};
 
-var signMeanings={白羊座:{trait:"热情冲动、勇往直前、领导力强",love:"喜欢主动追求，热情奔放，容易一见钟情",work:"适合领导岗位，创业能力强",advice:"学会倾听他人意见，控制冲动情绪"},金牛座:{trait:"稳重踏实、追求物质享受、忠诚可靠",love:"感情专一稳定，重视物质基础",work:"适合金融、艺术领域，理财能力强",advice:"学会适应变化，不要太固执"},双子座:{trait:"聪明机智、善于沟通、好奇心强",love:"喜欢新鲜感，沟通很重要",work:"适合传媒、销售领域，信息处理能力强",advice:"学会深入思考，避免浅尝辄止"},巨蟹座:{trait:"感情丰富、顾家、直觉敏锐",love:"感情细腻，重视家庭",work:"适合服务、餐饮领域",advice:"学会独立，不要过度依赖"},狮子座:{trait:"自信大方、领导力强、慷慨热情",love:"喜欢被关注和赞美",work:"适合管理、表演领域",advice:"学会谦虚，不要过度自我"},处女座:{trait:"细心谨慎、追求完美、分析能力强",love:"感情谨慎，注重细节",work:"适合分析、质检领域",advice:"学会接受不完美"},天秤座:{trait:"优雅和谐、善于社交、追求平衡",love:"重视感情平衡，需要伴侣",work:"适合公关、设计领域",advice:"学会独立做决定"},天蝎座:{trait:"神秘深沉、洞察力强、意志坚定",love:"感情深刻，忠诚专一",work:"适合研究、侦查领域",advice:"学会信任他人"},射手座:{trait:"乐观自由、热爱冒险、追求真理",love:"需要自由和空间",work:"适合旅游、教育领域",advice:"学会承诺和坚持"},摩羯座:{trait:"务实稳重、有责任感、野心勃勃",love:"感情认真负责，重视事业",work:"适合管理、政界",advice:"学会享受生活"},水瓶座:{trait:"独立创新、人道主义、思想前卫",love:"需要自由和独立",work:"适合科技、创新领域",advice:"学会与世俗和解"},双鱼座:{trait:"浪漫多情、富有同情心、直觉敏锐",love:"感情浪漫，容易投入",work:"适合艺术、慈善领域",advice:"学会面对现实"}};
+function doSC(){var y=document.getElementById("scY").value;var m=document.getElementById("scM").value;var d=document.getElementById("scD").value;if(!y||!m||!d){alert("请填写完整的出生日期");return}var sunKey=getSunSign(parseInt(m),parseInt(d));var sun=zD[sunKey];var moonIdx=(parseInt(y)+parseInt(m)+parseInt(d))%12;var venusIdx=(parseInt(y)*2+parseInt(m))%12;var marsIdx=(parseInt(y)+parseInt(m)*3)%12;var junoIdx=(parseInt(y)+parseInt(m)+parseInt(d)*2)%12;var moon=signs[moonIdx],venus=signs[venusIdx],mars=signs[marsIdx],juno=signs[junoIdx];document.getElementById("scSub").textContent=y+"年"+m+"月"+d+"日 出生";document.getElementById("scChart").innerHTML="<h4>🌟 你的星盘配置</h4><div class='chart-grid'><div class='chart-item'><span class='nm'>☉ 太阳星座</span><span class='sg'>"+sun.n+" "+sun.i+"</span></div><div class='chart-item'><span class='nm'>☽ 月亮星座</span><span class='sg'>"+moon+"</span></div><div class='chart-item'><span class='nm'>♀ 金星星座</span><span class='sg'>"+venus+"</span></div><div class='chart-item'><span class='nm'>♂ 火星星座</span><span class='sg'>"+mars+"</span></div><div class='chart-item'><span class='nm'>💒 婚神星</span><span class='sg'>"+juno+"</span></div><div class='chart-item'><span class='nm'>⬆ 上升星座</span><span class='sg'>"+moon+"</span></div></div>";document.getElementById("scSun").innerHTML="<h4>☉ 太阳星座 - "+sun.n+" "+sun.i+"</h4><strong>核心特质：</strong>"+signMeanings[sun.n].trait+"<br><br><strong>感情模式：</strong>"+signMeanings[sun.n].love+"<br><br><strong>事业发展：</strong>"+signMeanings[sun.n].work+"<br><br><strong>成长建议：</strong>"+signMeanings[sun.n].advice;document.getElementById("scMoon").innerHTML="<h4>☽ 月亮星座 - "+moon+"</h4><strong>内在情感：</strong>"+signMeanings[moon].trait+"<br><br>月亮星座代表你的内在情感需求和安全感来源。<br><br><strong>情感需求：</strong>"+signMeanings[moon].love;document.getElementById("scVenus").innerHTML="<h4>♀ 金星星座 - "+venus+"</h4><strong>爱情观：</strong>"+signMeanings[venus].love+"<br><br>金星星座代表你的爱情观、审美品味和价值观。";document.getElementById("scMars").innerHTML="<h4>♂ 火星星座 - "+mars+"</h4><strong>行动力：</strong>"+signMeanings[mars].work+"<br><br>火星星座代表你的行动方式、竞争意识。";document.getElementById("scJuno").innerHTML="<h4>💒 婚神星 - "+juno+"</h4>"+junoMeanings[juno];document.getElementById("scSummary").innerHTML="<h4>📋 综合解读</h4>你的太阳星座"+sun.n+"赋予你"+signMeanings[sun.n].trait.split("、")[0]+"的核心性格；月亮"+moon+"让你在内心深处"+signMeanings[moon].trait.split("、")[0]+"；金星"+venus+"影响你的爱情观；火星"+mars+"则影响你的行动方式。<br><br><strong>💡 人生建议：</strong>发挥太阳"+sun.n+"的优点，照顾月亮"+moon+"的情感需求，在爱情中展现实力！";document.getElementById("scR").classList.add("show")}
 
-var junoMeanings={白羊座:"婚姻中需要独立和自我空间，适合找一个支持你事业的伴侣。",金牛座:"婚姻中需要稳定和物质保障，适合找一个经济稳定的伴侣。",双子座:"婚姻中需要沟通和智力交流，适合找一个聊得来的伴侣。",巨蟹座:"婚姻中需要情感安全，适合找一个顾家的伴侣。",狮子座:"婚姻中需要被重视和尊重，适合找一个欣赏你的伴侣。",处女座:"婚姻中需要秩序和确定，适合找一个靠谱的伴侣。",天秤座:"婚姻中需要平衡和和谐，适合找一个优雅的伴侣。",天蝎座:"婚姻中需要深度连接和忠诚，适合找一个深情的伴侣。",射手座:"婚姻中需要自由和冒险，适合一个热爱自由的伴侣。",摩羯座:"婚姻中需要稳定和责任，适合一个成熟稳重的伴侣。",水瓶座:"婚姻中需要独立和友谊，适合一个思想前卫的伴侣。",双鱼座:"婚姻中需要浪漫和灵性，适合一个浪漫有爱心的伴侣。"};
+// ============ 生肖运势 ============
+var zcD={鼠:{n:"鼠",i:"🐀",e:"水",tian:"癸水",gui:"牛、龙、猴",fang:"东北、西南",chong:"马",sha:"南方"},牛:{n:"牛",i:"🐂",e:"土",tian:"己土",gui:"鼠、蛇、鸡",fang:"北方、西方",chong:"羊",sha:"东方"},虎:{n:"虎",i:"🐅",e:"木",tian:"甲木",gui:"马、狗、猪",fang:"东方、南方",chong:"猴",sha:"北方"},兔:{n:"兔",i:"🐇",e:"木",tian:"乙木",gui:"羊、猪、狗",fang:"东南、西北",chong:"鸡",sha:"西方"},龙:{n:"龙",i:"🐉",e:"土",tian:"戊土",gui:"鼠、猴、鸡",fang:"西方、北方",chong:"狗",sha:"南方"},蛇:{n:"蛇",i:"🐍",e:"火",tian:"丁火",gui:"牛、鸡、猴",fang:"南方、西方",chong:"猪",sha:"北方"},马:{n:"马",i:"🐎",e:"火",tian:"丙火",gui:"虎、羊、狗",fang:"东方、西南",chong:"鼠",sha:"北方"},羊:{n:"羊",i:"🐐",e:"土",tian:"己土",gui:"兔、马、猪",fang:"南方、东方",chong:"牛",sha:"西方"},猴:{n:"猴",i:"🐒",e:"金",tian:"庚金",gui:"鼠、龙、蛇",fang:"西方、东南",chong:"虎",sha:"南方"},鸡:{n:"鸡",i:"🐓",e:"金",tian:"辛金",gui:"牛、蛇、龙",fang:"北方、西南",chong:"兔",sha:"东方"},狗:{n:"狗",i:"🐕",e:"土",tian:"戊土",gui:"虎、兔、马",fang:"东方、南方",chong:"龙",sha:"北方"},猪:{n:"猪",i:"🐖",e:"水",tian:"癸水",gui:"兔、羊、虎",fang:"西北、东南",chong:"蛇",sha:"西方"}};
+var zcYear={鼠:"【2026流年运势】丙午年，鼠人整体运势平稳中带有波动。事业上需稳扎稳打；财运方面正财稳定，偏财需谨慎；感情方面有贵人牵线。建议多行善积德。",牛:"【2026流年运势】丙午年，牛人运势稳中有升。事业上贵人相助；财运平稳上升；感情方面稳定发展。今年是积累的一年。",虎:"【2026流年运势】丙午年，虎人与太岁相合，运势极佳！事业上有突破性进展；财运亨通；感情方面魅力四射。今年是虎人大展宏图的一年！",兔:"【2026流年运势】丙午年，兔人运势平稳向好。事业上贵人暗中相助；感情方面桃花运旺。建议多结交贵人。",龙:"【2026流年运势】丙午年，龙人与太岁相冲，运势起伏较大。事业上需谨慎；财运不稳。建议佩戴太岁符化解。",蛇:"【2026流年运势】丙午年，蛇人运势平稳。事业上稳步前进；偏财运佳；感情方面稳定发展。",马:"【2026流年运势】丙午年，马人本命年，运势波动较大。事业上需谨慎；感情方面需多包容。建议穿红色化解本命年不利。",羊:"【2026流年运势】丙午年，羊人与太岁相合，运势上升。事业上有贵人扶持；感情方面温馨甜蜜。今年是羊人收获的一年！",猴:"【2026流年运势】丙午年，猴人运势平稳中带有挑战。事业上需努力才能有收获；感情方面需主动出击。",鸡:"【2026流年运势】丙午年，鸡人运势稳中有升。事业上有望突破瓶颈；感情方面桃花运旺。",狗:"【2026流年运势】丙午年，狗人运势平稳向好。事业上贵人相助；感情方面稳定发展。",猪:"【2026流年运势】丙午年，猪人运势平稳。事业上需稳扎稳打；感情方面有贵人牵线。"}};
 
-function doSC(){var y=document.getElementById("scY").value;var m=document.getElementById("scM").value;var d=document.getElementById("scD").value;if(!y||!m||!d){alert("请填写完整的出生日期");return}var sunKey=getSunSign(parseInt(m),parseInt(d));var sun=zD[sunKey];var signs=["白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"];var moonIdx=(parseInt(y)+parseInt(m)+parseInt(d))%12;var venusIdx=(parseInt(y)*2+parseInt(m))%12;var marsIdx=(parseInt(y)+parseInt(m)*3)%12;var junoIdx=(parseInt(y)+parseInt(m)+parseInt(d)*2)%12;var moon=signs[moonIdx],venus=signs[venusIdx],mars=signs[marsIdx],juno=signs[junoIdx];document.getElementById("scSub").textContent=y+"年"+m+"月"+d+"日 出生";document.getElementById("scChart").innerHTML="<h4>🌟 你的星盘配置</h4><div class='chart-grid'><div class='chart-item'><span class='nm'>☉ 太阳星座</span><span class='sg'>"+sun.n+" "+sun.i+"</span></div><div class='chart-item'><span class='nm'>☽ 月亮星座</span><span class='sg'>"+moon+"</span></div><div class='chart-item'><span class='nm'>♀ 金星星座</span><span class='sg'>"+venus+"</span></div><div class='chart-item'><span class='nm'>♂ 火星星座</span><span class='sg'>"+mars+"</span></div><div class='chart-item'><span class='nm'>💒 婚神星</span><span class='sg'>"+juno+"</span></div><div class='chart-item'><span class='nm'>⬆ 上升星座</span><span class='sg'>"+moon+"</span></div></div>";document.getElementById("scSun").innerHTML="<h4>☉ 太阳星座 - "+sun.n+" "+sun.i+"</h4><strong>核心特质：</strong>"+signMeanings[sun.n].trait+"<br><br><strong>感情模式：</strong>"+signMeanings[sun.n].love+"<br><br><strong>事业发展：</strong>"+signMeanings[sun.n].work+"<br><br><strong>成长建议：</strong>"+signMeanings[sun.n].advice;document.getElementById("scMoon").innerHTML="<h4>☽ 月亮星座 - "+moon+"</h4><strong>内在情感：</strong>"+signMeanings[moon].trait+"<br><br>月亮星座代表你的内在情感需求和安全感来源。<br><br><strong>情感需求：</strong>"+signMeanings[moon].love;document.getElementById("scVenus").innerHTML="<h4>♀ 金星星座 - "+venus+"</h4><strong>爱情观：</strong>"+signMeanings[venus].love+"<br><br>金星星座代表你的爱情观、审美品味和价值观。";document.getElementById("scMars").innerHTML="<h4>♂ 火星星座 - "+mars+"</h4><strong>行动力：</strong>"+signMeanings[mars].work+"<br><br>火星星座代表你的行动方式、竞争意识。";document.getElementById("scJuno").innerHTML="<h4>💒 婚神星 - "+juno+"</h4>"+junoMeanings[juno];document.getElementById("scSummary").innerHTML="<h4>📋 综合解读</h4>你的太阳星座"+sun.n+"赋予你"+signMeanings[sun.n].trait.split("、")[0]+"的核心性格；月亮"+moon+"让你在内心深处"+signMeanings[moon].trait.split("、")[0]+"；金星"+venus+"影响你的爱情观；火星"+mars+"则影响你的行动方式。<br><br><strong>💡 人生建议：</strong>发挥太阳"+sun.n+"的优点，照顾月亮"+moon+"的情感需求，在爱情中展现金星"+venus+"的魅力，用火星"+mars+"的能量去追求目标。";document.getElementById("scR").classList.add("show")}
+function doZC(){var s=document.getElementById("zc").value;if(!s){alert("请选择生肖");return}var d=zcD[s];var seed=new Date().getDate()*s.charCodeAt(0);var todayTexts={鼠:"今日鼠人运势大吉！子水当令，财运亨通，贵人运旺。",牛:"今日牛人运势稳定！丑土生金，适合稳扎稳打。",虎:"今日虎人运势上升！寅木生发，贵人运强。",兔:"今日兔人运势良好！卯木柔和，人缘运旺。",龙:"今日龙人运势极佳！辰土当令，气场强大。",蛇:"今日蛇人运势上升！巳火生土，智慧大开。",马:"今日马人运势活跃！午火当令，精力充沛。",羊:"今日羊人运势平稳！未土生金，心态平和。",猴:"今日猴人运势大吉！申金生水，思维敏捷。",鸡:"今日鸡人运势良好！酉金当令，精明能干。",狗:"今日狗人运势上升！戌土生金，贵人运强。",猪:"今日猪人运势大吉！亥水生木，福气满满。"};document.getElementById("zcI").textContent=d.i;document.getElementById("zcN").textContent=d.n;document.getElementById("zcD").textContent=d.e+"象生肖 · 天干"+d.tian;document.getElementById("zcO").textContent=gS(seed);document.getElementById("zcL").textContent=gS(seed+1);document.getElementById("zcC").textContent=gS(seed+2);document.getElementById("zcM").textContent=gS(seed+3);document.getElementById("zcT").innerHTML="<h4>📊 今日运势</h4>"+todayTexts[s];document.getElementById("zcGui").innerHTML="<h4>🌟 生肖贵人指南</h4><strong>贵人生肖：</strong>"+d.gui+"<br><strong>贵人方位：</strong>"+d.fang+"<br><strong>冲煞生肖：</strong>"+d.chong+"<br><strong>煞气方位：</strong>"+d.sha;document.getElementById("zcYear").innerHTML="<h4>📅 2026流年运势</h4>"+zcYear[s];var colorMap={水:"黑色、蓝色",木:"绿色、青色",火:"红色、紫色",金:"白色、金色",土:"黄色、棕色"};document.getElementById("zcAdv").innerHTML="<h5>✅ 开运建议</h5><p>1. 多与贵人生肖接触<br>2. 办公或居住环境朝向贵人方位<br>3. 避免与冲煞生肖发生冲突<br>4. 今年适合穿"+colorMap[d.e]+"系服饰增强运势</p>";document.getElementById("zcR").classList.add("show")}
 
-// 生肖运势
-var zcD={鼠:{n:"鼠",i:"🐀",e:"水",p:"机智灵活、善于理财",tian:"癸水",gui:"牛、龙、猴",fang:"东北、西南",chong:"马",sha:"南方"},牛:{n:"牛",i:"🐂",e:"土",p:"勤恳踏实、任劳任怨",tian:"己土",gui:"鼠、蛇、鸡",fang:"北方、西方",chong:"羊",sha:"东方"},虎:{n:"虎",i:"🐅",e:"木",p:"威猛霸气、勇敢果断",tian:"甲木",gui:"马、狗、猪",fang:"东方、南方",chong:"猴",sha:"北方"},兔:{n:"兔",i:"🐇",e:"木",p:"温柔细腻、心思缜密",tian:"乙木",gui:"羊、猪、狗",fang:"东南、西北",chong:"鸡",sha:"西方"},龙:{n:"龙",i:"🐉",e:"土",p:"尊贵吉祥、志向远大",tian:"戊土",gui:"鼠、猴、鸡",fang:"西方、北方",chong:"狗",sha:"南方"},蛇:{n:"蛇",i:"🐍",e:"火",p:"智慧深沉、洞察力强",tian:"丁火",gui:"牛、鸡、猴",fang:"南方、西方",chong:"猪",sha:"北方"},马:{n:"马",i:"🐎",e:"火",p:"奔放自由、热情开朗",tian:"丙火",gui:"虎、羊、狗",fang:"东方、西南",chong:"鼠",sha:"北方"},羊:{n:"羊",i:"🐐",e:"土",p:"温柔善良、富有同情心",tian:"己土",gui:"兔、马、猪",fang:"南方、东方",chong:"牛",sha:"西方"},猴:{n:"猴",i:"🐒",e:"金",p:"聪明伶俐、反应敏捷",tian:"庚金",gui:"鼠、龙、蛇",fang:"西方、东南",chong:"虎",sha:"南方"},鸡:{n:"鸡",i:"🐓",e:"金",p:"勤劳务实、注重细节",tian:"辛金",gui:"牛、蛇、龙",fang:"北方、西南",chong:"兔",sha:"东方"},狗:{n:"狗",i:"🐕",e:"土",p:"忠诚可靠、正义感强",tian:"戊土",gui:"虎、兔、马",fang:"东方、南方",chong:"龙",sha:"北方"},猪:{n:"猪",i:"🐖",e:"水",p:"善良宽厚、福气满满",tian:"癸水",gui:"兔、羊、虎",fang:"西北、东南",chong:"蛇",sha:"西方"}};
-
-var zcYear={鼠:"【2026流年运势】丙午年，鼠人整体运势平稳中带有波动。事业上需稳扎稳打；财运方面正财稳定，偏财需谨慎；感情方面有贵人牵线。建议多行善积德。",牛:"【2026流年运势】丙午年，牛人运势稳中有升。事业上贵人相助，有望升职加薪；财运平稳上升；感情方面稳定发展。今年是积累的一年。",虎:"【2026流年运势】丙午年，虎人与太岁相合，运势极佳！事业上有突破性进展；财运亨通，正偏财双收；感情方面魅力四射。今年是虎人大展宏图的一年！",兔:"【2026流年运势】丙午年，兔人运势平稳向好。事业上贵人暗中相助；财运平稳，不宜冒险投资；感情方面桃花运旺。建议多结交贵人。",龙:"【2026流年运势】丙午年，龙人与太岁相冲，运势起伏较大。事业上需谨慎行事；财运不稳，不宜大额投资；感情方面需多沟通。建议佩戴太岁符化解。",蛇:"【2026流年运势】丙午年，蛇人运势平稳。事业上稳步前进；财运平稳，偏财运佳；感情方面稳定发展。建议多参加社交活动。",马:"【2026流年运势】丙午年，马人本命年，运势波动较大。事业上需谨慎；财运有起有落；感情方面需多包容。建议穿红色内衣化解本命年不利。",羊:"【2026流年运势】丙午年，羊人与太岁相合，运势上升。事业上有贵人扶持；财运稳定上升；感情方面温馨甜蜜。今年是羊人收获的一年！",猴:"【2026流年运势】丙午年，猴人运势平稳中带有挑战。事业上需努力才能有收获；财运平稳；感情方面需主动出击。建议多学习新技能。",鸡:"【2026流年运势】丙午年，鸡人运势稳中有升。事业上有望突破瓶颈；财运稳定；感情方面桃花运旺。建议多参加社交活动。",狗:"【2026流年运势】丙午年，狗人运势平稳向好。事业上贵人相助；财运平稳上升；感情方面稳定发展。建议多做善事，积攒福报。",猪:"【2026流年运势】丙午年，猪人运势平稳。事业上需稳扎稳打；财运平稳；感情方面有贵人牵线。建议多佩戴金银饰品增强财运。"};
-
-function doZC(){var s=document.getElementById("zc").value;if(!s){alert("请选择生肖");return}var d=zcD[s];var seed=new Date().getDate()*s.charCodeAt(0);document.getElementById("zcI").textContent=d.i;document.getElementById("zcN").textContent=d.n;document.getElementById("zcD").textContent=d.e+"象生肖 · "+d.p+" · 天干"+d.tian;document.getElementById("zcO").textContent=gS(seed);document.getElementById("zcL").textContent=gS(seed+1);document.getElementById("zcC").textContent=gS(seed+2);document.getElementById("zcM").textContent=gS(seed+3);document.getElementById("zcT").innerHTML="<h4>📊 今日运势</h4>"+(s=="鼠"?"今日鼠人运势大吉！子水当令，财运亨通，贵人运旺。":s=="牛"?"今日牛人运势稳定！丑土生金，适合稳扎稳打。":s=="虎"?"今日虎人运势上升！寅木生发，贵人运强。":s=="兔"?"今日兔人运势良好！卯木柔和，人缘运旺。":s=="龙"?"今日龙人运势极佳！辰土当令，气场强大。":s=="蛇"?"今日蛇人运势上升！巳火生土，智慧大开。":s=="马"?"今日马人运势活跃！午火当令，精力充沛。":s=="羊"?"今日羊人运势平稳！未土生金，心态平和。":s=="猴"?"今日猴人运势大吉！申金生水，思维敏捷。":s=="鸡"?"今日鸡人运势良好！酉金当令，精明能干。":s=="狗"?"今日狗人运势上升！戌土生金，贵人运强。":"今日猪人运势大吉！亥水生木，福气满满。");document.getElementById("zcGui").innerHTML="<h4>🌟 生肖贵人指南</h4><strong>贵人生肖：</strong>"+d.gui+"<br><strong>贵人方位：</strong>"+d.fang+"<br><strong>冲煞生肖：</strong>"+d.chong+"<br><strong>煞气方位：</strong>"+d.sha+"<br><br><strong>💡 贵人运使用指南：</strong>多与"+d.gui.split("、")[0]+"生肖的人接触；办公桌可朝向"+d.fang.split("、")[0]+"方位；避免与"+d.chong+"生肖冲突。";document.getElementById("zcYear").innerHTML="<h4>📅 2026流年运势</h4>"+zcYear[s];document.getElementById("zcAdv").innerHTML="<h5>✅ 开运建议</h5><p>1. 多与贵人生肖接触，寻求帮助<br>2. 办公或居住环境贵人方位摆放吉祥物<br>3. 避免与冲煞生肖发生冲突<br>4. 今年适合穿"+(d.e=="水"?"黑色、蓝色":d.e=="木"?"绿色、青色":d.e=="火"?"红色、紫色":d.e=="金"?"白色、金色":"黄色、棕色")+"系服饰增强运势</p>";document.getElementById("zcR").classList.add("show")}
-
-// 生肖配对
+// ============ 生肖配对 ============
 var cnD={鼠:"🐀",牛:"🐂",虎:"🐅",兔:"🐇",龙:"🐉",蛇:"🐍",马:"🐎",羊:"🐐",猴:"🐒",鸡:"🐓",狗:"🐕",猪:"🐖"};
-var cnP={"鼠-龙":{s:98,t:"鼠与龙是六合绝配，天作之合！",d:"【性格互补】鼠的机智灵活与龙的霸气果敢完美结合。<br>【感情运势】彼此吸引力极强，一见钟情几率高。<br>【事业合作】创业合作无往不利，财运亨通。<br>【相处建议】龙需要照顾鼠的感受。<br>【婚姻宜忌】结婚宜选龙年、鼠年、猴年。"},"鼠-猴":{s:95,t:"鼠与猴是三合吉配，默契十足！",d:"【性格特点】双方都聪明伶俐，沟通无障碍。<br>【感情方面】相处充满乐趣。<br>【事业财运】创意无限，适合一起创业。<br>【注意事项】猴需要专一，鼠需要包容。<br>【婚姻宜忌】结婚宜选猴年、鼠年、龙年。"},"鼠-牛":{s:88,t:"鼠与牛是六合之配，稳重踏实！",d:"【性格分析】鼠的机灵与牛的稳重形成互补。<br>【感情生活】牛的踏实给鼠安全感。<br>【家庭运势】婚后家庭和睦。<br>【相处之道】鼠需要理解牛的慢热。<br>【婚姻宜忌】结婚宜选牛年、鼠年、蛇年。"},"牛-蛇":{s:92,t:"牛与蛇是三合吉配，情深意重！",d:"【性格契合】牛的勤恳与蛇的智慧相得益彰。<br>【感情运势】彼此欣赏，感情稳定长久。<br>【财富运势】合作生财有道。<br>【注意事项】蛇需要多沟通。<br>【婚姻宜忌】结婚宜选蛇年、牛年、鸡年。"},"牛-鸡":{s:90,t:"牛与鸡是三合吉配，相得益彰！",d:"【性格分析】都是实干家，目标一致。<br>【感情方面】鸡的细心让牛感动。<br>【家庭生活】分工明确，模范夫妻。<br>【相处建议】鸡不要太挑剔。<br>【婚姻宜忌】结婚宜选鸡年、牛年、蛇年。"},"虎-马":{s:95,t:"虎与马是三合吉配，热情奔放！",d:"【性格特点】都热情开朗，充满活力。<br>【感情运势】一见如故，相处充满激情。<br>【事业合作】适合一起创业闯荡。<br>【注意事项】都冲动，需学会冷静。<br>【婚姻宜忌】结婚宜选马年、虎年、狗年。"},"虎-狗":{s:92,t:"虎与狗是三合吉配，忠诚可靠！",d:"【性格分析】虎的霸气与狗的忠诚完美组合。<br>【感情方面】狗的忠诚让虎感动。<br>【家庭运势】分工明确，家庭和睦。<br>【相处之道】虎需要照顾狗的感受。<br>【婚姻宜忌】结婚宜选狗年、虎年、马年。"},"兔-羊":{s:95,t:"兔与羊是三合吉配，温情脉脉！",d:"【性格特点】都属温和型，相处融洽。<br>【感情运势】彼此温柔体贴，感情细腻。<br>【家庭生活】家庭氛围温馨。<br>【注意事项】都敏感，需多沟通。<br>【婚姻宜忌】结婚宜选羊年、兔年、猪年。"},"兔-猪":{s:92,t:"兔与猪是三合吉配，幸福美满！",d:"【性格分析】都重感情，珍惜家庭。<br>【感情方面】相处轻松愉快。<br>【财富运势】日子越过越富裕。<br>【相处建议】猪需要勤奋。<br>【婚姻宜忌】结婚宜选猪年、兔年、羊年。"},"龙-猴":{s:95,t:"龙与猴是三合吉配，智慧与力量的结合！",d:"【性格特点】都聪明过人，互相欣赏。<br>【感情运势】天造地设的一对。<br>【事业合作】合作事业必成大器。<br>【注意事项】龙不要太霸道。<br>【婚姻宜忌】结婚宜选猴年、龙年、鼠年。"},"龙-鼠":{s:98,t:"龙与鼠是六合绝配，龙凤呈祥！",d:"【性格契合】龙的霸气与鼠的机智完美互补。<br>【感情运势】彼此吸引力极强。<br>【家庭生活】龙主外鼠主内，配合默契。<br>【相处之道】龙需要关注细节。<br>【婚姻宜忌】结婚宜选龙年、鼠年、猴年。"},"蛇-鸡":{s:92,t:"蛇与鸡是三合吉配，追求完美！",d:"【性格分析】都追求完美，品味相近。<br>【感情运势】彼此欣赏。<br>【事业财运】财富稳步增长。<br>【注意事项】都需要学会包容。<br>【婚姻宜忌】结婚宜选鸡年、蛇年、牛年。"},"马-羊":{s:90,t:"马与羊是六合吉配，温柔与热情的碰撞！",d:"【性格特点】一动一静，刚好互补。<br>【感情运势】感情甜蜜。<br>【家庭生活】生活多彩。<br>【相处建议】马需要多陪伴羊。<br>【婚姻宜忌】结婚宜选羊年、马年、狗年。"},"马-狗":{s:92,t:"马与狗是三合吉配，志同道合！",d:"【性格分析】都正直善良，价值观一致。<br>【感情方面】狗的忠诚让马安心。<br>【事业合作】合作做生意容易成功。<br>【注意事项】马不要太直率。<br>【婚姻宜忌】结婚宜选狗年、马年、虎年。"},"羊-猪":{s:88,t:"羊与猪是三合吉配，温馨幸福！",d:"【性格特点】都善良温和，家庭观念强。<br>【感情运势】相处温馨甜蜜。<br>【家庭生活】家庭和睦。<br>【注意事项】都需要主动表达。<br>【婚姻宜忌】结婚宜选猪年、羊年、兔年。"},"猴-鼠":{s:95,t:"猴与鼠是三合吉配，聪明绝顶！",d:"【性格分析】都聪明伶俐，相处充满乐趣。<br>【感情运势】猴的幽默让鼠开心。<br>【事业合作】创意无限。<br>【注意事项】猴需要专一。<br>【婚姻宜忌】结婚宜选鼠年、猴年、龙年。"},"鸡-牛":{s:90,t:"鸡与牛是三合吉配，勤劳致富！",d:"【性格特点】都勤劳务实。<br>【感情运势】感情稳定长久。<br>【财富运势】勤劳致富。<br>【相处之道】鸡不要太挑剔。<br>【婚姻宜忌】结婚宜选牛年、鸡年、蛇年。"},"鸡-蛇":{s:92,t:"鸡与蛇是三合吉配，精明能干！",d:"【性格分析】都精明能干，善于理财。<br>【感情方面】蛇的深沉吸引鸡。<br>【事业财运】合作财运亨通。<br>【注意事项】都需要多沟通。<br>【婚姻宜忌】结婚宜选蛇年、鸡年、牛年。"},"狗-虎":{s:92,t:"狗与虎是三合吉配，忠诚守护！",d:"【性格特点】狗的忠诚与虎的霸气结合。<br>【感情运势】虎的保护欲让狗安心。<br>【家庭生活】家庭和睦。<br>【相处建议】虎需要倾听狗的意见。<br>【婚姻宜忌】结婚宜选虎年、狗年、马年。"},"狗-马":{s:92,t:"狗与马是三合吉配，正义联盟！",d:"【性格分析】都正直善良，有正义感。<br>【感情方面】马的奔放让狗开心。<br>【事业合作】合作做生意容易成功。<br>【注意事项】马不要太冲动。<br>【婚姻宜忌】结婚宜选马年、狗年、虎年。"},"猪-兔":{s:92,t:"猪与兔是三合吉配，甜蜜温馨！",d:"【性格特点】都善良温和，重感情。<br>【感情运势】相处甜蜜。<br>【家庭生活】家庭温馨。<br>【相处建议】猪需要勤奋。<br>【婚姻宜忌】结婚宜选兔年、猪年、羊年。"},"猪-羊":{s:88,t:"猪与羊是三合吉配，温暖相伴！",d:"【性格分析】都温和善良，相处融洽。<br>【感情方面】感情温馨。<br>【家庭运势】家庭和睦。<br>【注意事项】都需要主动表达。<br>【婚姻宜忌】结婚宜选羊年、猪年、兔年。"}};
+var cnP={"鼠-龙":{s:98,t:"六合绝配，天作之合！",d:"【性格互补】鼠的机智与龙的霸气完美结合。<br>【感情运势】彼此吸引力极强，一见钟情几率高。<br>【事业合作】创业合作无往不利，财运亨通。<br>【婚姻宜忌】结婚宜选龙年、鼠年。"},"鼠-猴":{s:95,t:"三合吉配，默契十足！",d:"【性格特点】都聪明伶俐，沟通无障碍。<br>【感情方面】相处充满乐趣。<br>【事业财运】创意无限，适合创业。<br>【婚姻宜忌】结婚宜选猴年、鼠年。"},"牛-蛇":{s:92,t:"三合吉配，情深意重！",d:"【性格契合】牛的勤恳与蛇的智慧相得益彰。<br>【感情运势】彼此欣赏，感情稳定。<br>【财富运势】合作生财有道。<br>【婚姻宜忌】结婚宜选蛇年、牛年。"},"虎-马":{s:95,t:"三合吉配，热情奔放！",d:"【性格特点】都热情开朗，充满活力。<br>【感情运势】相处充满激情。<br>【事业合作】适合一起创业闯荡。<br>【婚姻宜忌】结婚宜选马年、虎年。"},"兔-羊":{s:95,t:"三合吉配，温情脉脉！",d:"【性格特点】都属温和型，相处融洽。<br>【感情运势】彼此温柔体贴。<br>【家庭生活】家庭氛围温馨。<br>【婚姻宜忌】结婚宜选羊年、兔年。"},"龙-鼠":{s:98,t:"六合绝配，龙凤呈祥！",d:"【性格契合】龙的霸气与鼠的机智完美互补。<br>【感情运势】彼此吸引力极强。<br>【家庭生活】龙主外鼠主内，配合默契。<br>【婚姻宜忌】结婚宜选龙年、鼠年。"},"龙-猴":{s:95,t:"三合吉配，智慧与力量的结合！",d:"【性格特点】都聪明过人。<br>【感情运势】天造地设的一对。<br>【事业合作】合作事业必成大器。<br>【婚姻宜忌】结婚宜选猴年、龙年。"},"蛇-鸡":{s:92,t:"三合吉配，追求完美！",d:"【性格分析】都追求完美，品味相近。<br>【感情运势】彼此欣赏。<br>【事业财运】财富稳步增长。<br>【婚姻宜忌】结婚宜选鸡年、蛇年。"},"马-羊":{s:90,t:"六合吉配，温柔与热情的碰撞！",d:"【性格特点】一动一静，刚好互补。<br>【感情运势】感情甜蜜。<br>【家庭生活】生活多彩。<br>【婚姻宜忌】结婚宜选羊年、马年。"},"马-狗":{s:92,t:"三合吉配，志同道合！",d:"【性格分析】都正直善良，价值观一致。<br>【感情方面】狗的忠诚让马安心。<br>【事业合作】合作容易成功。<br>【婚姻宜忌】结婚宜选狗年、马年。"},"猪-兔":{s:92,t:"三合吉配，甜蜜温馨！",d:"【性格特点】都善良温和，重感情。<br>【感情运势】相处甜蜜。<br>【家庭生活】家庭温馨。<br>【婚姻宜忌】结婚宜选兔年、猪年。"},"猪-羊":{s:88,t:"三合吉配，温暖相伴！",d:"【性格分析】都温和善良，相处融洽。<br>【感情方面】感情温馨。<br>【家庭运势】家庭和睦。<br>【婚姻宜忌】结婚宜选羊年、猪年。"}};
 
-function doC(){var y=document.getElementById("cy").value;var t=document.getElementById("ct").value;if(!y||!t){alert("请选择两个生肖");return}document.getElementById("cYi").textContent=cnD[y];document.getElementById("cTi").textContent=cnD[t];var k=y+"-"+t,k2=t+"-"+y;var p=cnP[k]||cnP[k2];if(!p)p={s:70+(y.charCodeAt(0)+t.charCodeAt(0))%20,t:"生肖相配程度中等",d:"【性格分析】需要时间磨合。<br>【感情运势】需要双方的努力。<br>【相处建议】互相尊重，求同存异。<br>【注意事项】冷静处理分歧。<br>【婚姻宜忌】建议选双方本命年或三合年份结婚。"};document.getElementById("cS").textContent=p.s+"%";document.getElementById("cT").innerHTML="<h4>"+p.t+"</h4>"+p.d+"<br><br><strong>💡 总体评价：</strong>"+(p.s>=90?"天作之合，珍惜缘分！":p.s>=80?"良配佳缘，幸福美满！":p.s>=70?"中等相配，需要经营！":"需要磨合，用心相处！");document.getElementById("cR").classList.add("show")}
+function doC(){var y=document.getElementById("cy").value;var t=document.getElementById("ct").value;if(!y||!t){alert("请选择两个生肖");return}document.getElementById("cYi").textContent=cnD[y];document.getElementById("cTi").textContent=cnD[t];var k=y+"-"+t,k2=t+"-"+y;var p=cnP[k]||cnP[k2];if(!p)p={s:70+(y.charCodeAt(0)+t.charCodeAt(0))%20,t:"生肖相配程度中等",d:"【性格分析】需要时间磨合。<br>【感情运势】需要双方的努力和沟通。<br>【相处建议】互相尊重，求同存异。<br>【婚姻宜忌】建议选双方本命年或三合年份结婚。"};document.getElementById("cS").textContent=p.s+"%";document.getElementById("cT").innerHTML="<h4>"+p.t+"</h4>"+p.d+"<br><br><strong>💡 总体评价：</strong>"+(p.s>=90?"天作之合，珍惜缘分！":p.s>=80?"良配佳缘，幸福美满！":p.s>=70?"中等相配，需要经营！":"需要磨合，用心相处！");document.getElementById("cR").classList.add("show")}
 
-// 塔罗
+// ============ 宝宝起名 ============
+function switchNameTab(tab){document.getElementById("babyForm").style.display=tab==="baby"?"block":"none";document.getElementById("companyForm").style.display=tab==="company"?"block":"none";document.getElementById("renameForm").style.display=tab==="rename"?"block":"none";document.querySelectorAll(".name-tab").forEach(function(el){el.classList.remove("active");});event.target.classList.add("active")}
+
+var babyBoyNames=["浩然","梓涵","子轩","明泽","宇航","思远","俊杰","嘉豪","文博","天宇","浩宇","一鸣","鑫磊","俊熙","宇航","志远","子墨","博宇","瑞霖","泽宇","晨曦","熠然","承泽","安然","锦程","鸿煊","博涛","烨伟","修洁","嘉许","立诚","立辉","哲瀚","思睿","星宇","冠霖","峻熙","博雅","修文","弘文","明轩","子默","承远","凯瑞","健豪","泽鑫","宏盛","冠杰","熠彤","懿轩","鸿涛","伟祺","荣轩","越泽","晟睿","文昊","昊然","修杰","志泽","睿渊","思远","鸿波","天翔","烨磊","圣杰","文杰","俊豪","嘉懿","飞扬","星驰","鹏举","天逸","承志","远航","旭尧","熠然","鸿鹄","嘉茂","安福","弘光","英毅","逸仙","承弼","明朗","var babyGirlNames=["欣怡","诗涵","子涵","雅静","梦琪","思颖","雨桐","梓萱","雅婷","欣悦","佳怡","子萱","子瑶","梦洁","雅琳","语汐","思雨","诗语","紫萱","采薇","映雪","含烟","碧玉","翠烟","芳华","春华","秋水","夏雨","冬雪","清莲","幽兰","紫烟","凝霜","听雨","问雪","访烟","凌波","采莲","秋莲","冬梅","春兰","夏莲","幽蝶","素琴","流云","飞燕","紫薇","水云","映月","凌寒","傲雪","霜华","雪莲","冰清","玉洁","灵韵","清音","雨蝶","云雀","采菊","幽篁"];
+var companyTemplates={科技:{t2:["智远","领航","创腾","云栖","数智","未来","天际","纵横"],"t3":["华智科技","领航未来","创腾时代","云栖智联","数智未来","星辰科技","云端互联","天际智造"],"t4":["华智科技有限公司","领航未来科技有限公司","创腾时代科技有限公司","云栖智联科技有限公司"]},餐饮:{t2:["御香","福满","味悦","香满园","百味"],"t3":["御香楼餐饮","福满楼美食","味悦轩餐饮","香满园酒楼","百味轩餐饮"],"t4":["御香楼餐饮有限公司","福满楼美食有限公司","味悦轩餐饮有限公司"]},教育:{t2:["启航","育才","博雅","明德","致远"],"t3":["启航教育","育才学院","博雅学堂","明德书院","致远教育"],"t4":["启航教育科技有限公司","育才学院有限公司","博雅学堂有限公司"]},医疗:{t2:["康元","仁和","本草","济世","颐养"],"t3":["康元医疗","仁和医院","本草堂中医","济世堂医疗","颐养堂健康"],"t4":["康元医疗科技有限公司","仁和医疗有限公司","本草堂医疗有限公司"]},金融:{t2:["恒信","金汇","银海","富盈","德诚"],"t3":["恒信资本","金汇投资","银海财富","富盈金融","德诚投资"],"t4":["恒信资本管理有限公司","金汇投资有限公司","银海财富管理有限公司"]},贸易:{t2:["通达","盛世","华隆","瑞祥","鸿盛"],"t3":["通达贸易","盛世进出口","华隆商贸","瑞祥货运","鸿盛物流"],"t4":["通达贸易有限公司","盛世进出口有限公司","华隆商贸有限公司"]},建筑:{t2:["宏基","华厦","安居","筑梦","恒筑"],"t3":["宏基建筑","华厦地产","安居工程","筑梦建设","恒筑房产"],"t4":["宏基建筑工程有限公司","华厦地产置业有限公司","安居建筑工程有限公司"]},服装:{t2:["霓裳","绮丽","风华","雅韵","锦裳"],"t3":["霓裳服饰","绮丽服装","风华时尚","雅韵女装","锦绣坊服装"],"t4":["霓裳服饰有限公司","绮丽服装有限公司","风华时尚有限公司"]},传媒:{t2:["华创","星耀","视野","声浪","众声"],"t3":["华创传媒","星耀影视","视野传媒","声浪广告","众声传播"],"t4":["华创传媒有限公司","星耀影视有限公司","视野传媒广告有限公司"]},娱乐:{t2:["欢乐","星梦","玩趣","乐享","酷玩"],"t3":["欢乐时光","星梦娱乐","玩趣旅游","乐享文化","酷玩体育"],"t4":["欢乐时光娱乐有限公司","星梦文化传媒有限公司","玩趣旅游有限公司"]},农业:{t2:["绿野","禾丰","金穗","翠林","润田"],"t3":["绿野农业","禾丰种业","金穗米业","翠林林业","润田农庄"],"t4":["绿野农业科技有限公司","禾丰种业有限公司","金穗米业有限公司"]},其他:{t2:["华盛","瑞达","恒昌","德辉","万通"],"t3":["华盛集团","瑞达实业","恒昌贸易","德辉企业","万通股份"],"t4":["华盛集团有限公司","瑞达实业有限公司","恒昌贸易有限公司"]}};
+
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function getWuxing(name){var c=name.charCodeAt(name.length-1);var arr=["金","金","木","木","水","水","火","火","土","土"];return arr[c%10]||"土"}
+function getScore(name,birthday,wx){var base=75;var w=getWuxing(name);if(wx&&wx.indexOf(w)!==-1)base+=15;var len=name.length;if(len===2)base+=5;var score=Math.min(99,base+Math.floor(Math.random()*10));return {score:score,wuxing:w}}
+
+function doBabyName(){var xing=document.getElementById("bmXing").value;var gender=document.getElementById("bmGender").value;var y=document.getElementById("bmY").value;var m=document.getElementById("bmM").value;var d=document.getElementById("bmD").value;if(!xing||!gender){alert("请选择姓氏和性别");return}var wx=[];document.querySelectorAll(".wuxing-check:checked").forEach(function(el){wx.push(el.value);});var pool=gender==="男"?babyBoyNames:babyGirlNames;var shuffled=shuffle(pool);var picks=shuffled.slice(0,6);var results=picks.map(function(n){var full=xing+n;var r=getScore(n,"",wx);return {name:full,pinyin:"·",wuxing:r.wuxing,score:r.score,meaning:(r.score>=90?"大吉":"")+(r.score>=85?"数理吉祥，五行平衡":"")+(r.score>=80?"名字寓意美好，助运一生":"")+(r.score>=75?"名字朗朗上口，适合使用":"")});results.sort(function(a,b){return b.score-a.score});var html="<div class='result-head'><div class='result-icon'>👶</div><div class='result-title'>宝宝吉祥好名</div><div class='result-sub'>姓氏："+xing+" · 性别："+(gender==="男"?"男宝宝":"女宝宝")+(y?" · 出生："+y+"年"+(m?m+"月":""):"")+"</div></div>";html+="<div class='bazi-row'><div class='bazi-item'><div class='label'>姓氏</div><div class='val'>"+xing+"</div></div><div class='bazi-item'><div class='label'>天格</div><div class='val'>"+(xing.charCodeAt(0)%10+1)+"</div></div><div class='bazi-item'><div class='label'>人格</div><div class='val'>"+(xing.charCodeAt(0)%10+5)+"</div></div><div class='bazi-item'><div class='label'>地格</div><div class='val'>"+(picks[0].charCodeAt(0)%10+1)+"</div></div></div>";html+="<h4 style='color:#ffd700;margin:14px 0 10px'>🎉 为您推荐以下吉祥好名（按五行评分排序）</h4><div class='name-list'>";results.forEach(function(r){html+="<div class='name-card'><div class='name'>"+r.name+"</div><div class='pinyin'>"+r.pinyin+"</div><div class='score'>评分 "+r.score+"分 · 五行 "+r.wuxing+"</div><div class='meaning'>"+r.meaning+"</div></div>";});html+="</div>";html+="<div class='pay-section'><div class='pay-title'>💰 解锁完整版起名报告</div><div class='pay-desc'>扫码支付 39.9 元，获取完整八字分析+名字详解</div><div class='pay-qr'><div><div class='qr-box'><img src='wechat.jpg' style='width:120px;height:120px'></div><div class='qr-lbl'>微信 39.9元</div></div><div><div class='qr-box'><img src='alipay.jpg' style='width:120px;height:120px'></div><div class='qr-lbl'>支付宝</div></div></div></div>";document.getElementById("babyNameR").innerHTML=html;document.getElementById("babyNameR").classList.add("show");document.getElementById("babyNameR").scrollIntoView({behavior:"smooth",block:"center"})}
+
+function doCompanyName(){var type=document.getElementById("coType").value;var len=document.getElementById("coLen").value;var xing=document.getElementById("coXing").value;var style=document.getElementById("coStyle").value;if(!type){alert("请选择行业类型");return}var templates=companyTemplates[type]||companyTemplates["其他"];var pool=len==="2"?templates.t2:len==="3"?templates.t3:templates.t4;var shuffled=shuffle(pool);var picks=shuffled.slice(0,4);var html="<div class='result-head'><div class='result-icon'>🏢</div><div class='result-title'>公司吉祥名称</div><div class='result-sub'>行业："+type+" · 期望字数："+len+"字</div></div>";html+="<h4 style='color:#ffd700;margin:14px 0 10px'>🎉 为您推荐以下吉祥公司名称</h4><div class='name-list'>";picks.forEach(function(name){var w=getWuxing(name);var score=80+Math.floor(Math.random()*15);html+="<div class='name-card'><div class='name'>"+name+"</div><div class='pinyin'>五行："+w+" · 数理大吉</div><div class='score'>推荐指数 ★★★★☆</div><div class='meaning'>该名称寓意美好，数理吉祥，适合"+type+"行业使用，利于公司长远发展。</div></div>";});html+="</div>";html+="<div class='pay-section'><div class='pay-title'>💰 解锁完整版公司名称详解</div><div class='pay-desc'>扫码支付 99 元，获取完整五行分析+商标注册建议</div><div class='pay-qr'><div><div class='qr-box'><img src='wechat.jpg' style='width:120px;height:120px'></div><div class='qr-lbl'>微信 99元</div></div><div><div class='qr-box'><img src='alipay.jpg' style='width:120px;height:120px'></div><div class='qr-lbl'>支付宝</div></div></div></div>";document.getElementById("companyNameR").innerHTML=html;document.getElementById("companyNameR").classList.add("show");document.getElementById("companyNameR").scrollIntoView({behavior:"smooth",block:"center"})}
+
+function doRename(){var oldName=document.getElementById("oldName").value;var gender=document.getElementById("reGender").value;var y=document.getElementById("reY").value;if(!oldName||!gender){alert("请填写现用姓名和性别");return}var wx=[];document.querySelectorAll(".re-wuxing-check:checked").forEach(function(el){wx.push(el.value);});var pool=gender==="男"?babyBoyNames:babyGirlNames;var shuffled=shuffle(pool);var picks=shuffled.slice(0,4);var oldScore=60+Math.floor(Math.random()*15);var html="<div class='result-head'><div class='result-icon'>✨</div><div class='result-title'>改名分析报告</div><div class='result-sub'>原名："+oldName+" · 性别："+gender+"</div></div>";html+="<div class='fortune-block'><h4>📊 原名分析</h4>姓名：「"+oldName+"」数理评分为"+oldScore+"分。<br><br>";html+="<strong>五行分析：</strong>原名五行"+getWuxing(oldName.charAt(oldName.length-1))+"偏弱，"+(wx.length>0?"喜用五行为"+wx.join("、")+"。":"");
+
+html+="<br><br><strong>改名建议：</strong>"+(oldScore<75?"当前姓名评分偏低，建议改名以提升运势。":"当前姓名尚可，但仍有提升空间。")+"</div>";html+="<h4 style='color:#ffd700;margin:14px 0 10px'>✨ 推荐新名</h4><div class='name-list'>";picks.forEach(function(n){var full=n;var r=getScore(n,"",wx);html+="<div class='name-card'><div class='name'>"+full+"</div><div class='pinyin'>五行 "+r.wuxing+" · 评分 "+r.score+"分</div><div class='score'>"+(r.score>oldScore?"↑ 比分提高 "+(r.score-oldScore)+" 分":"与原名相当")+"</div><div class='meaning'>新名五行"+r.wuxing+"，寓意吉祥，助运事业发展。</div></div>";});html+="</div>";html+="<div class='pay-section'><div class='pay-title'>💰 解锁完整改名报告</div><div class='pay-desc'>扫码支付 29.9 元，获取完整八字分析+改名详解</div><div class='pay-qr'><div><div class='qr-box'><img src='wechat.jpg' style='width:120px;height:120px'></div><div class='qr-lbl'>微信 29.9元</div></div><div><div class='qr-box'><img src='alipay.jpg' style='width:120px;height:120px'></div><div class='qr-lbl'>支付宝</div></div></div></div>";document.getElementById("renameR").innerHTML=html;document.getElementById("renameR").classList.add("show");document.getElementById("renameR").scrollIntoView({behavior:"smooth",block:"center"})}
+
+// ============ 塔罗 ============
 var tarot=[{n:"愚人",i:"0",d:"愚人象征纯真的开始，代表新的旅程。",a:"正位：勇敢尝试新事物。逆位：过于冒险。"},{n:"魔术师",i:"I",d:"魔术师掌握万物元素，代表实现愿望的能力。",a:"正位：心想事成。逆位：缺乏行动力。"},{n:"女祭司",i:"II",d:"女祭司代表直觉与神秘智慧。",a:"正位：相信直觉。逆位：隐瞒真相。"},{n:"女皇",i:"III",d:"女皇是丰收与富足的象征。",a:"正位：财运亨通，感情甜蜜。逆位：过于依赖。"},{n:"皇帝",i:"IV",d:"皇帝代表权威与秩序。",a:"正位：事业上升。逆位：过于严苛。"},{n:"恋人",i:"VI",d:"恋人牌象征爱情与选择。",a:"正位：感情甜蜜。逆位：犹豫不决。"},{n:"命运之轮",i:"X",d:"命运之轮转动不息，暗示命运的转变。",a:"正位：好运降临。逆位：运势低迷。"},{n:"正义",i:"XI",d:"正义代表公正与平衡。",a:"正位：公道自在人心。逆位：偏心不公。"},{n:"死神",i:"XIII",d:"死神代表旧事物的终结与新生的开始。",a:"正位：放下过去，迎接新生。逆位：抗拒改变。"},{n:"星星",i:"XVII",d:"星星是希望与灵感的象征。",a:"正位：希望重燃。逆位：失去信心。"},{n:"月亮",i:"XVIII",d:"月亮代表恐惧与幻觉。",a:"正位：直觉敏锐。逆位：迷茫困惑。"},{n:"太阳",i:"XIX",d:"太阳是成功与喜悦的象征。",a:"正位：诸事顺遂。逆位：暂时的阴霾。"},{n:"世界",i:"XXI",d:"世界代表完结与成就。",a:"正位：梦想成真。逆位：尚未完成。"}];
 var selT=[];
 function initTarot(){var sp=document.getElementById("tSp");if(sp.children.length>0)return;sp.innerHTML="";for(var i=0;i<3;i++){var sl=document.createElement("div");sl.className="t-slot";sl.onclick=(function(idx){return function(){selTC(idx,this)}})(i);sl.innerHTML="❓<small>"+["过去","现在","未来"][i]+"</small>";sp.appendChild(sl)}selT=[null,null,null]}
 function selTC(idx,el){if(selT.filter(function(x){return x!==null}).length>=3&&selT[idx]===null)return;var c=tarot[Math.floor(Math.random()*tarot.length)];selT[idx]=c;el.classList.add("selected");el.innerHTML='<span style="font-size:1.7em">'+c.i+"</span><small>"+c.n+"</small>"}
 function doT(){var v=selT.filter(function(x){return x!==null});if(v.length<3){alert("请选择3张牌");return}var pos=["过去 · "+v[0].n,"现在 · "+v[1].n,"未来 · "+v[2].n];var txts=v.map(function(c,i){return"<h4>"+pos[i]+"</h4>"+c.d+"<br><strong>"+c.a+"</strong>"});document.getElementById("tT").innerHTML=txts.join("<br><br>");document.getElementById("tR").classList.add("show")}
 
-// 观音灵签
-var sticks=[{g:"🌟",t:"上上签",n:"第1签·钟离得道",x:"云开日出自分明，枯木逢春再发荣。莫道春风消息晚，花开还有旧时红。<br><br><strong>解：</strong>此签大吉，诸事顺遂。求财得财，求名得名。"},{g:"🌟",t:"上上签",n:"第2签·太乙收魔",x:"巍巍道德五千言，行满功成朝玉阙。<br><br><strong>解：</strong>此签大吉，贵人相助，名利双收。"},{g:"🌸",t:"上中签",n:"第3签·秦美弄玉",x:"龙潜大泽跃深渊，若得风雷消息到，一声雷震动山川。<br><br><strong>解：</strong>此签上吉，先难后易。"},{g:"🌸",t:"上中签",n:"第4签·苏秦刺股",x:"刺股悬梁苦读书，一朝得遂风雷便。<br><br><strong>解：</strong>此签中吉，学业进步。"},{g:"🌙",t:"中上签",n:"第5签·东郊赏花",x:"东郊二月草初生，桃李无言亦有情。<br><br><strong>解：</strong>此签中吉，名利迟来。"},{g:"⛰",t:"中平签",n:"第6签·颜回安贫",x:"一簞食尽乐融融，瓢饮居中有古风。<br><br><strong>解：</strong>此签平吉，知足常乐。"},{g:"⚡",t:"下下签",n:"第7签·曹操困蜀",x:"曹操千里走单骑，夜走麦城实可悲。<br><br><strong>解：</strong>此签下凶，运势低迷，宜守不宜动。"}];
+// ============ 观音灵签 ============
+var sticks=[{g:"🌟",t:"上上签",n:"第1签·钟离得道",x:"云开日出自分明，枯木逢春再发荣。莫道春风消息晚，花开还有旧时红。<br><br><strong>解：</strong>此签大吉，诸事顺遂。求财得财，求名得名。"},{g:"🌟",t:"上上签",n:"第2签·太乙收魔",x:"巍巍道德五千言，行满功成朝玉阙。<br><br><strong>解：</strong>此签大吉，贵人相助，名利双收。"},{g:"🌸",t:"上中签",n:"第3签·秦美弄玉",x:"龙潜大泽跃深渊，若得风雷消息到。<br><br><strong>解：</strong>此签上吉，先难后易。"},{g:"🌸",t:"上中签",n:"第4签·苏秦刺股",x:"刺股悬梁苦读书，一朝得遂风雷便。<br><br><strong>解：</strong>此签中吉，学业进步。"},{g:"🌙",t:"中上签",n:"第5签·东郊赏花",x:"东郊二月草初生，桃李无言亦有情。<br><br><strong>解：</strong>此签中吉，名利迟来。"},{g:"⛰",t:"中平签",n:"第6签·颜回安贫",x:"一簞食尽乐融融，瓢饮居中有古风。<br><br><strong>解：</strong>此签平吉，知足常乐。"},{g:"⚡",t:"下下签",n:"第7签·曹操困蜀",x:"曹操千里走单骑，夜走麦城实可悲。<br><br><strong>解：</strong>此签下凶，运势低迷，宜守不宜动。"}];
 function doS(){var idx=Math.floor(Math.random()*sticks.length);var s=sticks[idx];var type=document.getElementById("sT").value;document.getElementById("sG").textContent=s.g;document.getElementById("sTi").textContent=s.t;document.getElementById("sN").textContent=s.n+" · 求"+type;document.getElementById("sT2").innerHTML="<h4>签文</h4>"+s.x;document.getElementById("sR").classList.add("show")}
 
-// 风水
+// ============ 风水 ============
 var ftips={东:{n:"东门（紫气东来）",b:"正北、正南",g:"东方是贵人方位，利事业发展。",t:"大门朝东忌正对墙角或路冲。"},南:{n:"南门（贵人临门）",b:"正东、东南",g:"南方利名声和学业。",t:"南方忌摆放尖角物品。"},西:{n:"西门（白虎方位）",b:"正北、正东",g:"西方财位，宜放金蟾或聚宝盆。",t:"西方忌堆放杂物。"},北:{n:"北门（玄武守护）",b:"正南、正西",g:"北方利事业和官运。",t:"北方忌有厕所或厨房污水口。"},东南:{n:"东南门（财星高照）",b:"正西、西北",g:"东南方是财位，宜放招财猫。",t:"东南方忌摆放假花。"},西南:{n:"西南门（姻缘吉位）",b:"正北、正东",g:"西南方利姻缘和感情。",t:"西南方忌摆放锐利物品。"}};
 function doF(){var z=document.getElementById("fZ").value;var d=document.getElementById("fD").value;var t=document.getElementById("fT").value;if(!z){alert("请选择生肖");return}var info=ftips[d];document.getElementById("fSub").textContent=z+"年 · "+info.n+" · "+t+"户型";document.getElementById("fTxt").innerHTML="<h4>🏠 吉位分析</h4>大门朝"+info.n+"。您的财位在"+info.b+"方向。<br><br><h4>🌿 开运植物</h4>建议在财位摆放绿萝、发财树。";document.getElementById("fTab").innerHTML="<h4>⚠️ 注意事项</h4>"+info.t;document.getElementById("fAdv2").innerHTML="1. 保持大门周围整洁通畅<br>2. 财位避免堆放杂物<br>3. 每天清晨开窗换气<br>4. 每月十五烧香祈福";document.getElementById("fR2").classList.add("show")}
 
-// AI面相
+// ============ AI面相 ============
 var faceStream=null;
 function initCam(){var btn=document.getElementById("snapBtn");if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){document.getElementById("cTip").innerHTML="📷<br>正在启动...";navigator.mediaDevices.getUserMedia({video:{facingMode:"user"}}).then(function(stream){faceStream=stream;document.getElementById("v").srcObject=stream;document.getElementById("cTip").innerHTML="✅ 已启动<br>确认光线后点击下方按钮";btn.disabled=false}).catch(function(){document.getElementById("cTip").innerHTML="❌ 无法访问摄像头<br>请检查权限设置"})}}
 function snapF(){if(!faceStream){alert("请先启动摄像头");return}var canvas=document.getElementById("cv");var video=document.getElementById("v");canvas.width=video.videoWidth;canvas.height=video.videoHeight;var ctx=canvas.getContext("2d");ctx.drawImage(video,0,0);document.getElementById("fLd").classList.remove("hidden");document.getElementById("fR").classList.remove("show");setTimeout(function(){generateFaceReport()},2000)}
-function generateFaceReport(){document.getElementById("fLd").classList.add("hidden");var scores={eye:65+Math.floor(Math.random()*30),nose:60+Math.floor(Math.random()*35),lip:65+Math.floor(Math.random()*30),forehead:60+Math.floor(Math.random()*35),overall:65+Math.floor(Math.random()*25)};document.getElementById("fSc").textContent=scores.overall+"分";document.getElementById("fMeters").innerHTML='<div class="meter-row"><div class="meter-lbl"><span>👁 眼睛</span><span>'+scores.eye+'%</span></div><div class="meter-bar"><div class="meter-fill g" style="width:'+scores.eye+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👃 鼻子</span><span>'+scores.nose+'%</span></div><div class="meter-bar"><div class="meter-fill g" style="width:'+scores.nose+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👄 嘴唇</span><span>'+scores.lip+'%</span></div><div class="meter-bar"><div class="meter-fill p" style="width:'+scores.lip+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>🧠 额头</span><span>'+scores.forehead+'%</span></div><div class="meter-bar"><div class="meter-fill p" style="width:'+scores.forehead+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👤 综合</span><span>'+scores.overall+'%</span></div><div class="meter-bar"><div class="meter-fill b" style="width:'+scores.overall+'%"></div></div></div>';document.getElementById("fDet").innerHTML="<h4>👁 五官详解</h4>眼睛明亮有神者，财运佳，事业发展顺利。眼神清澈者心思纯净，人际关系良好。您的整体面相显示：聪明伶俐，善于交际，财运平稳上升。";document.getElementById("fFat").innerHTML="<h4>💎 命运特征</h4>面相圆润者心地善良，人缘好。颧骨高耸者有领导力，适合创业或管理岗位。根据面相分析，您适合从事与人打交道的工作。";document.getElementById("fAdv").innerHTML="1. 多微笑，积攒人脉<br>2. 注意眼部保养，保持眼神明亮<br>3. 保持嘴唇红润<br>4. 额头饱满者学业运佳<br>5. 定期面部按摩";document.getElementById("fR").classList.add("show")}
-</script></body>
-</html>
+function generateFaceReport(){document.getElementById("fLd").classList.add("hidden");var scores={eye:65+Math.floor(Math.random()*30),nose:60+Math.floor(Math.random()*35),lip:65+Math.floor(Math.random()*30),forehead:60+Math.floor(Math.random()*35),overall:65+Math.floor(Math.random()*25)};document.getElementById("fSc").textContent=scores.overall+"分";document.getElementById("fMeters").innerHTML='<div class="meter-row"><div class="meter-lbl"><span>👁 眼睛</span><span>'+scores.eye+'%</span></div><div class="meter-bar"><div class="meter-fill g" style="width:'+scores.eye+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👃 鼻子</span><span>'+scores.nose+'%</span></div><div class="meter-bar"><div class="meter-fill g" style="width:'+scores.nose+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👄 嘴唇</span><span>'+scores.lip+'%</span></div><div class="meter-bar"><div class="meter-fill p" style="width:'+scores.lip+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>🧠 额头</span><span>'+scores.forehead+'%</span></div><div class="meter-bar"><div class="meter-fill p" style="width:'+scores.forehead+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👤 综合</span><span>'+scores.overall+'%</span></div><div class="meter-bar"><div class="meter-fill b" style="width:'+scores.overall+'%"></div></div></div>';document.getElementById("fDet").innerHTML="<h4>👁 五官详解</h4>眼睛明亮有神者，财运佳，事业发展顺利。您的整体面相显示：聪明伶俐，善于交际，财运平稳上升。";document.getElementById("fFat").innerHTML="<h4>💎 命运特征</h4>面相圆润者心地善良，人缘好。颧骨高耸者有领导力，适合创业或管理岗位。";document.getElementById("fAdv").innerHTML="1. 多微笑，积攒人脉<br>2. 注意眼部保养<br>3. 保持嘴唇红润<br>4. 额头饱满者学业运佳<br>5. 定期面部按摩";document.getElementById("fR").classList.add("show")}
+</script></body></html>
