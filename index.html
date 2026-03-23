@@ -886,6 +886,40 @@ function initCam(){var btn=document.getElementById("snapBtn");if(navigator.media
 function snapF(){if(!faceStream){alert("请先启动摄像头");return}var canvas=document.getElementById("cv");var video=document.getElementById("v");canvas.width=video.videoWidth;canvas.height=video.videoHeight;var ctx=canvas.getContext("2d");ctx.drawImage(video,0,0);document.getElementById("fLd").classList.remove("hidden");document.getElementById("fR").classList.remove("show");setTimeout(function(){generateFaceReport()},2000)}
 function generateFaceReport(){document.getElementById("fLd").classList.add("hidden");var s={eye:65+Math.floor(Math.random()*30),nose:60+Math.floor(Math.random()*35),lip:65+Math.floor(Math.random()*30),forehead:60+Math.floor(Math.random()*35),overall:65+Math.floor(Math.random()*25)};document.getElementById("fSc").textContent=s.overall+"分";document.getElementById("fMeters").innerHTML='<div class="meter-row"><div class="meter-lbl"><span>👁 眼睛</span><span>'+s.eye+'%</span></div><div class="meter-bar"><div class="meter-fill g" style="width:'+s.eye+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👃 鼻子</span><span>'+s.nose+'%</span></div><div class="meter-bar"><div class="meter-fill g" style="width:'+s.nose+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👄 嘴唇</span><span>'+s.lip+'%</span></div><div class="meter-bar"><div class="meter-fill p" style="width:'+s.lip+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>🧠 额头</span><span>'+s.forehead+'%</span></div><div class="meter-bar"><div class="meter-fill p" style="width:'+s.forehead+'%"></div></div></div><div class="meter-row"><div class="meter-lbl"><span>👤 综合</span><span>'+s.overall+'%</span></div><div class="meter-bar"><div class="meter-fill b" style="width:'+s.overall+'%"></div></div></div>';document.getElementById("fDet").innerHTML="<h4>👁 五官详解</h4>眼睛明亮有神者，财运佳，事业发展顺利。您的整体面相显示：聪明伶俐，善于交际，财运平稳上升。";document.getElementById("fFat").innerHTML="<h4>💎 命运特征</h4>面相圆润者心地善良，人缘好。颧骨高耸者有领导力，适合创业或管理岗位。";document.getElementById("fAdv").innerHTML="1. 多微笑，积攒人脉<br>2. 注意眼部保养<br>3. 保持嘴唇红润<br>4. 额头饱满者学业运佳<br>5. 定期面部按摩";document.getElementById("fR").classList.add("show");document.getElementById("fR").scrollIntoView({behavior:"smooth",block:"center"})}
 
+
+<!-- 百度广告位 -->
+<div style="margin:16px 0;padding:16px;background:linear-gradient(135deg,rgba(255,215,0,.05),rgba(255,107,0,.05));border:1px solid rgba(255,215,0,.15);border-radius:12px;text-align:center">
+<p style="color:#ffd700;font-size:1em;margin-bottom:10px">&#128368; 玄学殿堂 · 精准广告投放</p>
+<p style="color:#807060;font-size:.8em;margin-bottom:8px">广告由百度联盟提供 · 安全可靠</p>
+<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:20px;min-height:100px;display:flex;align-items:center;justify-content:center;flex-direction:column">
+<p style="color:#ffd700;font-size:.9em">&#128227; 广告位招募中</p>
+<p style="color:#706050;font-size:.78em;margin-top:4px">精准投放 · 玄学/星座/命理/起名用户群体</p>
+<p style="color:#a09080;font-size:.73em;margin-top:6px">联系作者获取报价 · 每千次展示 &#165;8-15</p>
+</div>
+</div>
+
+
+
+<!-- 百度广告位 -->
+<div style="margin:16px 0;padding:16px;background:linear-gradient(135deg,rgba(255,215,0,.05),rgba(255,107,0,.05));border:1px solid rgba(255,215,0,.15);border-radius:12px;text-align:center">
+<p style="color:#ffd700;font-size:1em;margin-bottom:10px">&#128368; 玄学殿堂 · 精准广告投放</p>
+<p style="color:#807060;font-size:.8em;margin-bottom:8px">广告由百度联盟提供 · 安全可靠</p>
+<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:20px;min-height:100px;display:flex;align-items:center;justify-content:center;flex-direction:column">
+<p style="color:#ffd700;font-size:.9em">&#128227; 广告位招募中</p>
+<p style="color:#706050;font-size:.78em;margin-top:4px">精准投放 · 玄学/星座/命理/起名用户群体</p>
+<p style="color:#a09080;font-size:.73em;margin-top:6px">联系作者获取报价 · 每千次展示 &#165;8-15</p>
+</div>
+</div>
+
+
+
+</div>
+<footer>
+<p>&#169; 2026 &#128368; 玄学殿堂 | AI星座 &#183; 生肖配对 &#183; 星盘解读 &#183; 生肖流年 &#183; 塔罗占卜 &#183; 风水布局 &#183; 宝宝起名</p>
+<div style="width:60px;height:2px;background:linear-gradient(90deg,transparent,#ffd700,transparent);margin:10px auto"></div>
+<p style="color:#403020;font-size:.74em">&#36866;&#20307;&#23089;&#20048;&#21442;&#32771; | &#21629;&#36816;&#25484;&#25511;&#22312;&#33258;&#24049;&#25163;&#20013; | &#29702;&#24615;&#23545;&#24453;</p>
+</footer>
+
 </script>
 </body>
 </html>
